@@ -1,4 +1,13 @@
-@import "./styles/variables";
+/* Global SCSS variables for consistent styling */
+$primary: #3E2AD1;
+$primary-light: #6a48fa;
+$primary-dark: #2a1d9e;
+$secondary: #f5f5f5;
+$background: #f5f7fa;
+$border: #e8e8e8;
+$success: #52c41a;
+$warning: #faad14;
+$error: #f5222d;
 
 /* Base font size setting for WeChat mini programs */
 page {
@@ -7,26 +16,55 @@ page {
   font-size: 40rpx; /* Increased base font size */
 }
 
-/* Global text size variables for consistent sizing */
+/* Global CSS variables (custom properties) for use in any component */
 :root {
-  --font-size-xs: 24rpx;  /* Was 28rpx */
-  --font-size-sm: 36rpx;  /* Was 32rpx */
-  --font-size-md: 40rpx;  /* Was 36rpx */
-  --font-size-lg: 48rpx;  /* Was 40rpx */
-  --font-size-xl: 56rpx;  /* Was 48rpx */
+  /* Font Sizes */
+  --font-size-xs: 24rpx;
+  --font-size-sm: 36rpx;
+  --font-size-md: 40rpx;
+  --font-size-lg: 48rpx;
+  --font-size-xl: 56rpx;
   
-  /* Colors - keeping CSS variables for backward compatibility */
+  /* Colors */
   --primary-color: #{$primary};
   --primary-light: #{$primary-light};
   --primary-dark: #{$primary-dark};
   --secondary-color: #{$secondary};
-  --text-color: #{$text-dark};
-  --text-color-light: #{$text-light};
+  --text-color: #333;
+  --text-color-light: #999;
+  --text-white: #fff;
+  --text-white-soft: rgba(255, 255, 255, 0.8);
+  --text-white-muted: rgba(255, 255, 255, 0.6);
   --background-color: #{$background};
   --border-color: #{$border};
   --success-color: #{$success};
   --warning-color: #{$warning};
   --error-color: #{$error};
+  
+  /* Gradients */
+  --blue-gradient: linear-gradient(to right bottom, #3b7df8, #5590f5);
+  --purple-gradient: linear-gradient(to right bottom, #9c6cfe, #b288fd);
+  --green-gradient: linear-gradient(to right bottom, #4dd599, #63dfac);
+  
+  /* Shadows */
+  --shadow-sm: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8rpx 25rpx rgba(0, 0, 0, 0.15);
+  --shadow-primary: 0 8rpx 25rpx rgba(62, 42, 209, 0.25);
+  
+  /* Border radius */
+  --radius-sm: 8rpx;
+  --radius-md: 15rpx;
+  --radius-lg: 20rpx;
+  --radius-xl: 30rpx;
+  --radius-full: 999rpx;
+  
+  /* Spacing */
+  --spacing-xs: 5rpx;
+  --spacing-sm: 10rpx;
+  --spacing-md: 15rpx;
+  --spacing-lg: 20rpx;
+  --spacing-xl: 30rpx;
 }
 
 /* Setting default text sizes for common elements */
@@ -53,4 +91,28 @@ button, .button {
 input, .input {
   height: 90rpx;
   font-size: var(--font-size-md);
+}
+
+/* Common utility classes for layouts */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }

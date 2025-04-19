@@ -1,9 +1,8 @@
-@import "../../styles/variables";
-
 .index-page {
-  @include flex-column;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  background-color: $background;
+  background-color: var(--background-color);
   padding-bottom: 0;
 }
 
@@ -12,39 +11,41 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 10rpx;
-  background-color: $primary-light;
-  color: $text-white;
-  box-shadow: $shadow-primary;
+  padding: var(--spacing-sm);
+  background-color: var(--primary-light);
+  color: var(--text-white);
+  box-shadow: var(--shadow-primary);
   
   .greeting-content {
-    @include flex-column;
+    display: flex;
+    flex-direction: column;
     
     .greeting-text {
       font-size: var(--font-size-xl);
       font-weight: bold;
-      margin-bottom: $spacing-sm;
+      margin-bottom: var(--spacing-sm);
     }
     
     .quick-stats {
       display: flex;
       align-items: center;
-      margin-top: $spacing-md;
+      margin-top: var(--spacing-md);
       
       .stat-item {
-        @include flex-column;
+        display: flex;
+        flex-direction: column;
         align-items: flex-start;
         
         .stat-value {
           font-size: var(--font-size-lg);
           font-weight: bold;
-          color: $text-white;
-          margin-bottom: $spacing-xs;
+          color: var(--text-white);
+          margin-bottom: var(--spacing-xs);
         }
         
         .stat-label {
           font-size: var(--font-size-xs);
-          color: $text-white-soft;
+          color: var(--text-white-soft);
         }
       }
       
@@ -52,7 +53,7 @@
         width: 2rpx;
         height: 40rpx;
         background-color: rgba(255, 255, 255, 0.3);
-        margin: 0 $spacing-lg;
+        margin: 0 var(--spacing-lg);
       }
     }
   }
@@ -60,41 +61,43 @@
   .avatar {
     width: 100rpx;
     height: 100rpx;
-    border-radius: $radius-full;
+    border-radius: var(--radius-full);
     border: 4rpx solid rgba(255, 255, 255, 0.8);
-    box-shadow: $shadow-sm;
+    box-shadow: var(--shadow-sm);
   }
 }
 
 // Main content container
 .main-content {
   flex: 1;
-  @include flex-column;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
 .appointments-section {
-  margin: 0 $spacing-lg $spacing-xl;
+  margin: 0 var(--spacing-lg) var(--spacing-xl);
   flex-grow: 1;
 }
 
 // Section containers
 .section-container {
-  border-radius: $radius-lg;
-  padding: $spacing-xl;
-  box-shadow: $shadow-md;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
   
   &.appointments-container {
-    background: $blue-gradient;
-    color: $text-white;
+    background: var(--blue-gradient);
+    color: var(--text-white);
     height: 100%;
-    @include flex-column;
+    display: flex;
+    flex-direction: column;
   }
   
   &.chat-container {
-    border: 1px solid $primary-light;
+    border: 1px solid var(--primary-light);
   }
   
   // Decorative circle overlay
@@ -114,17 +117,17 @@
     display: flex;
     align-items: center;
     position: relative;
-    z-index: $z-base;
+    z-index: 1;
     
     .section-icon {
-      color: $text-white;
-      margin-right: $spacing-md;
+      color: var(--text-white);
+      margin-right: var(--spacing-md);
     }
     
     .section-title {
       font-size: var(--font-size-lg);
       font-weight: bold;
-      color: $text-white;
+      color: var(--text-white);
     }
   }
 }
@@ -133,30 +136,33 @@
 .upcoming-appointments {
   flex: 1;
   position: relative;
-  z-index: $z-base;
-  @include flex-column;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .appointment-card {
   display: flex;
   align-items: center;
-  padding: $spacing-lg;
+  padding: var(--spacing-lg);
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
-  border-radius: $radius-md;
-  margin-bottom: $spacing-lg;
-  box-shadow: $shadow-md;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
   border: 1px solid rgba(255, 255, 255, 0.3);
   
   .appointment-date {
     width: 120rpx;
     min-width: 120rpx;
     height: 120rpx;
-    border-radius: $radius-md;
+    border-radius: var(--radius-md);
     background-color: rgba(255, 255, 255, 0.25);
-    color: $text-white;
-    @include flex-center;
-    margin-right: $spacing-lg;
+    color: var(--text-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: var(--spacing-lg);
     
     .date-label {
       font-size: var(--font-size-md);
@@ -171,64 +177,67 @@
     .court-name {
       font-size: var(--font-size-md);
       font-weight: bold;
-      color: $text-white;
-      margin-bottom: $spacing-sm;
+      color: var(--text-white);
+      margin-bottom: var(--spacing-sm);
       display: block;
     }
     
     .time-slot {
       font-size: var(--font-size-sm);
-      color: $text-white-soft;
+      color: var(--text-white-soft);
     }
   }
 }
 
 // Empty states and info displays
 .empty-appointments {
-  @include flex-column;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: $spacing-xl $spacing-xl;
+  padding: var(--spacing-xl) var(--spacing-xl);
   position: relative;
-  z-index: $z-base;
+  z-index: 1;
   flex: 1;
   
   .empty-icon {
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: $spacing-lg;
+    margin-bottom: var(--spacing-lg);
   }
   
   .empty-text {
     font-size: var(--font-size-md);
-    color: $text-white-soft;
+    color: var(--text-white-soft);
   }
 }
 
 .remaining-appointments {
-  padding: $spacing-lg;
+  padding: var(--spacing-lg);
   text-align: center;
   font-size: var(--font-size-md);
   color: rgba(255, 255, 255, 0.9);
-  border-radius: $radius-md;
-  margin-bottom: $spacing-lg;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 // Button styles
 .make-appointment-btn {
-  @include flex-center;
-  background-color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  color: $text-white;
+  color: var(--text-white);
   height: 90rpx;
   border-radius: 45rpx;
   font-weight: bold;
   position: relative;
-  z-index: $z-base;
+  z-index: 1;
   backdrop-filter: blur(5px);
   margin-top: auto;
   
   .btn-text {
-    margin-left: $spacing-sm;
+    margin-left: var(--spacing-sm);
     font-size: var(--font-size-md);
   }
 }
@@ -240,18 +249,18 @@
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 45rpx;
-  padding: $spacing-sm $spacing-lg;
-  margin-bottom: $spacing-md;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
   position: relative;
-  z-index: $z-base;
+  z-index: 1;
   backdrop-filter: blur(5px);
   
   .chat-input {
     flex: 1;
     height: 80rpx;
-    padding: 0 $spacing-lg;
+    padding: 0 var(--spacing-lg);
     font-size: var(--font-size-md);
-    color: $text-white;
+    color: var(--text-white);
   }
   
   .send-button {
@@ -259,7 +268,9 @@
     height: 80rpx;
     border-radius: 40rpx;
     background-color: rgba(255, 255, 255, 0.25);
-    @include flex-center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -267,9 +278,7 @@
   font-size: var(--font-size-xs);
   color: rgba(255, 255, 255, 0.7);
   text-align: center;
-  padding: 0 $spacing-lg;
+  padding: 0 var(--spacing-lg);
   position: relative;
-  z-index: $z-base;
-}
-
+  z-index: 1;
 }
