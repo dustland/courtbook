@@ -7,14 +7,21 @@ interface ActivityChartProps {
   data: ActivityData[];
 }
 
+// Structure to represent rows of activity data
+interface ActivityRow {
+  months: string[];
+  weeks: ActivityData[][];
+}
+
 const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
-  const [weeks, setWeeks] = useState<ActivityData[][]>([]);
-  const [months, setMonths] = useState<string[]>([]);
+  const [activityRows, setActivityRows] = useState<ActivityRow[]>([]);
 
   useEffect(() => {
-    // Group activities by week
-    const weekGroups: ActivityData[][] = [];
-    const monthLabels: string[] = [];
+    // Sort data by date
+    const sortedData = [...data].sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
+
     const monthNames = [
       "一月",
       "二月",
@@ -30,29 +37,53 @@ const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
       "十二月",
     ];
 
-    // Sort data by date
-    const sortedData = [...data].sort(
-      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-    );
+    // Organize data into rows with approximately 4-5 weeks each
+    const rows: ActivityRow[] = [];
+    let currentRow: ActivityRow = { months: [], weeks: [] };
+    let weekCount = 0;
 
-    // Group by weeks
+    // Group by weeks first
+    const allWeeks: ActivityData[][] = [];
     for (let i = 0; i < sortedData.length; i += 7) {
       const weekData = sortedData.slice(i, i + 7);
       if (weekData.length > 0) {
-        weekGroups.push(weekData);
-
-        // Add month label for first day of month
-        const date = new Date(weekData[0].date);
-        if (date.getDate() <= 7 || i === 0) {
-          monthLabels.push(monthNames[date.getMonth()]);
-        } else {
-          monthLabels.push("");
-        }
+        allWeeks.push(weekData);
       }
     }
 
-    setWeeks(weekGroups);
-    setMonths(monthLabels);
+    // Now group weeks into rows (4-5 weeks per row)
+    const weeksPerRow = 5;
+    for (let weekIndex = 0; weekIndex < allWeeks.length; weekIndex++) {
+      const week = allWeeks[weekIndex];
+
+      // First week of first day of the week
+      const firstDate = new Date(week[0].date);
+      const monthIndex = firstDate.getMonth();
+
+      // Add month label if it's the first day of a month or first week in a row
+      if (firstDate.getDate() <= 7 || weekCount === 0) {
+        currentRow.months.push(monthNames[monthIndex]);
+      } else {
+        currentRow.months.push("");
+      }
+
+      currentRow.weeks.push(week);
+      weekCount++;
+
+      // Start a new row after weeksPerRow weeks
+      if (weekCount === weeksPerRow && weekIndex < allWeeks.length - 1) {
+        rows.push(currentRow);
+        currentRow = { months: [], weeks: [] };
+        weekCount = 0;
+      }
+    }
+
+    // Add the last row if it has any weeks
+    if (currentRow.weeks.length > 0) {
+      rows.push(currentRow);
+    }
+
+    setActivityRows(rows);
   }, [data]);
 
   const getColorClass = (count: number) => {
@@ -67,40 +98,44 @@ const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
     <View className="activity-chart">
       <Text className="chart-title">活动频率</Text>
 
-      <View className="months-row">
-        {months.map((month, index) => (
-          <Text key={index} className="month-label">
-            {month}
-          </Text>
-        ))}
-      </View>
+      {activityRows.map((row, rowIndex) => (
+        <View key={rowIndex} className="activity-row">
+          <View className="months-row">
+            {row.months.map((month, index) => (
+              <Text key={index} className="month-label">
+                {month}
+              </Text>
+            ))}
+          </View>
 
-      <View className="chart-grid">
-        <View className="day-labels">
-          <Text className="day-label">周一</Text>
-          <Text className="day-label">周三</Text>
-          <Text className="day-label">周五</Text>
-          <Text className="day-label">周日</Text>
-        </View>
+          <View className="chart-grid">
+            <View className="day-labels">
+              <Text className="day-label">周一</Text>
+              <Text className="day-label">周三</Text>
+              <Text className="day-label">周五</Text>
+              <Text className="day-label">周日</Text>
+            </View>
 
-        <View className="weeks-container">
-          {weeks.map((week, weekIndex) => (
-            <View key={weekIndex} className="week-column">
-              {week.map((day, dayIndex) => (
-                <View
-                  key={`${weekIndex}-${dayIndex}`}
-                  className={`day-cell ${getColorClass(day.count)}`}
-                >
-                  <View className="tooltip">
-                    <Text>{day.date}</Text>
-                    <Text>{day.count} 活动</Text>
-                  </View>
+            <View className="weeks-container">
+              {row.weeks.map((week, weekIndex) => (
+                <View key={weekIndex} className="week-column">
+                  {week.map((day, dayIndex) => (
+                    <View
+                      key={`${weekIndex}-${dayIndex}`}
+                      className={`day-cell ${getColorClass(day.count)}`}
+                    >
+                      <View className="tooltip">
+                        <Text>{day.date}</Text>
+                        <Text>{day.count} 活动</Text>
+                      </View>
+                    </View>
+                  ))}
                 </View>
               ))}
             </View>
-          ))}
+          </View>
         </View>
-      </View>
+      ))}
 
       <View className="legend">
         <Text className="legend-text">活动强度:</Text>

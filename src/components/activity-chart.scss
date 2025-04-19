@@ -13,6 +13,14 @@
     display: block;
   }
   
+  .activity-row {
+    margin-bottom: 25px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
   .months-row {
     display: flex;
     margin-left: 30px;
@@ -23,12 +31,15 @@
       color: #666;
       flex: 1;
       text-align: center;
+      min-width: 40px;
     }
   }
   
   .chart-grid {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
+    overflow-x: hidden;
     
     .day-labels {
       display: flex;
@@ -36,6 +47,7 @@
       justify-content: space-between;
       height: 120px;
       margin-right: 5px;
+      flex-shrink: 0;
       
       .day-label {
         font-size: 10px;
@@ -47,11 +59,13 @@
       display: flex;
       flex-wrap: nowrap;
       overflow-x: auto;
+      max-width: calc(100vw - 80px);
       
       .week-column {
         display: flex;
         flex-direction: column;
         margin-right: 3px;
+        flex-shrink: 0;
         
         .day-cell {
           width: 12px;
@@ -116,21 +130,23 @@
   .legend {
     margin-top: 15px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     
     .legend-text {
       font-size: 12px;
       color: #666;
-      margin-right: 10px;
+      margin-bottom: 8px;
     }
     
     .legend-items {
       display: flex;
+      flex-wrap: wrap;
       
       .legend-item {
         display: flex;
         align-items: center;
         margin-right: 10px;
+        margin-bottom: 5px;
         
         .color-box {
           width: 10px;
