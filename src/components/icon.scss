@@ -1,0 +1,52 @@
+.taro-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom color classes */
+.icon-primary {
+  color: var(--primary-color);
+}
+
+.menu-icon {
+  color: #666;
+  margin-right: 12rpx;
+}
+
+.menu-arrow {
+  color: #ccc;
+}
+
+.empty-icon {
+  color: #ddd;
+}
+
+.send-icon {
+  color: #fff;
+}
+
+.chat-icon {
+  color: #fff;
+}
+
+/* Common color classes */
+.taro-icon-primary {
+  color: var(--primary-color);
+}
+
+.taro-icon-666 {
+  filter: invert(40%) sepia(0%) saturate(0%) hue-rotate(153deg) brightness(95%) contrast(92%);
+}
+
+.taro-icon-ccc {
+  filter: invert(85%) sepia(0%) saturate(0%) hue-rotate(154deg) brightness(90%) contrast(90%);
+}
+
+.taro-icon-ddd {
+  filter: invert(88%) sepia(0%) saturate(0%) hue-rotate(147deg) brightness(95%) contrast(90%);
+}
+
+.taro-icon-fff {
+  filter: brightness(0) invert(1);
+}

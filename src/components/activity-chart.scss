@@ -1,0 +1,169 @@
+.activity-chart {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  .chart-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    display: block;
+  }
+  
+  .months-row {
+    display: flex;
+    margin-left: 30px;
+    margin-bottom: 5px;
+    
+    .month-label {
+      font-size: 12px;
+      color: #666;
+      flex: 1;
+      text-align: center;
+    }
+  }
+  
+  .chart-grid {
+    display: flex;
+    align-items: center;
+    
+    .day-labels {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 120px;
+      margin-right: 5px;
+      
+      .day-label {
+        font-size: 10px;
+        color: #666;
+      }
+    }
+    
+    .weeks-container {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      
+      .week-column {
+        display: flex;
+        flex-direction: column;
+        margin-right: 3px;
+        
+        .day-cell {
+          width: 12px;
+          height: 12px;
+          margin: 2px 0;
+          border-radius: 2px;
+          position: relative;
+          
+          &:hover .tooltip {
+            display: block;
+          }
+          
+          .tooltip {
+            display: none;
+            position: absolute;
+            top: -30px;
+            left: 15px;
+            background-color: #333;
+            color: white;
+            font-size: 10px;
+            padding: 5px 8px;
+            border-radius: 4px;
+            z-index: 10;
+            width: 100px;
+            
+            &:after {
+              content: '';
+              position: absolute;
+              top: 50%;
+              left: -4px;
+              margin-top: -4px;
+              border-width: 4px 4px 4px 0;
+              border-style: solid;
+              border-color: transparent #333 transparent transparent;
+            }
+          }
+          
+          &.level-0 {
+            background-color: #ebedf0;
+          }
+          
+          &.level-1 {
+            background-color: #9be9a8;
+          }
+          
+          &.level-2 {
+            background-color: #40c463;
+          }
+          
+          &.level-3 {
+            background-color: #30a14e;
+          }
+          
+          &.level-4 {
+            background-color: #216e39;
+          }
+        }
+      }
+    }
+  }
+  
+  .legend {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    
+    .legend-text {
+      font-size: 12px;
+      color: #666;
+      margin-right: 10px;
+    }
+    
+    .legend-items {
+      display: flex;
+      
+      .legend-item {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        
+        .color-box {
+          width: 10px;
+          height: 10px;
+          margin-right: 3px;
+          border-radius: 2px;
+          
+          &.level-0 {
+            background-color: #ebedf0;
+          }
+          
+          &.level-1 {
+            background-color: #9be9a8;
+          }
+          
+          &.level-2 {
+            background-color: #40c463;
+          }
+          
+          &.level-3 {
+            background-color: #30a14e;
+          }
+          
+          &.level-4 {
+            background-color: #216e39;
+          }
+        }
+        
+        Text {
+          font-size: 10px;
+          color: #666;
+        }
+      }
+    }
+  }
+} 

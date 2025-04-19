@@ -1,0 +1,168 @@
+.schedule-container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  padding: 15px;
+  
+  .view-toggle {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--primary-color);
+    margin-bottom: 15px;
+    
+    .toggle-button {
+      flex: 1;
+      text-align: center;
+      padding: 10px 0;
+      font-size: var(--font-size-md);
+      color: var(--primary-color);
+      
+      &.active {
+        background-color: var(--primary-color);
+        color: #fff;
+      }
+    }
+  }
+  
+  .day-view {
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      
+      .day-name {
+        font-size: var(--font-size-xl);
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .day-date {
+        font-size: var(--font-size-md);
+        color: #666;
+      }
+    }
+    
+    .time-slots-container {
+      height: 400px;
+    }
+    
+    .time-slot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      
+      &.available {
+        background-color: #e6f7ff;
+        border: 1px solid var(--primary-color);
+      }
+      
+      &.booked {
+        background-color: #f5f5f5;
+        border: 1px solid #d9d9d9;
+      }
+      
+      .time {
+        font-size: var(--font-size-lg);
+        color: #333;
+      }
+      
+      .status {
+        .available-text {
+          color: var(--primary-color);
+          font-weight: bold;
+          font-size: var(--font-size-md);
+        }
+        
+        .booked-by {
+          color: #999;
+          font-size: var(--font-size-md);
+        }
+      }
+    }
+  }
+  
+  .week-view {
+    .days-row {
+      white-space: nowrap;
+      padding-bottom: 15px;
+      
+      .day-column {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        width: 140rpx;
+        border-radius: 8px;
+        
+        &.selected {
+          background-color: #e6f7ff;
+        }
+        
+        .day-name {
+          font-size: var(--font-size-lg);
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+        
+        .day-date {
+          font-size: var(--font-size-sm);
+          color: #666;
+          margin-bottom: 10px;
+        }
+        
+        .day-slots {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          
+          .mini-slot {
+            height: 8rpx;
+            margin-bottom: 4rpx;
+            border-radius: 4rpx;
+            
+            &.available {
+              background-color: var(--primary-color);
+            }
+            
+            &.booked {
+              background-color: #d9d9d9;
+            }
+          }
+        }
+      }
+    }
+  }
+} 
+
+.schedule {
+  &-header {
+    &-title {
+      color: var(--primary-color);
+    }
+
+    &-date {
+      color: var(--primary-color);
+    }
+
+    &-switch {
+      &-tab {
+        &.active {
+          color: var(--primary-color);
+          border-bottom: 2px solid var(--primary-color);
+        }
+      }
+    }
+  }
+
+  &-cell {
+    &.active {
+      background-color: var(--primary-color);
+    }
+  }
+} 
