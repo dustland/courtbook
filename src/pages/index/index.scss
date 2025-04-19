@@ -1,60 +1,50 @@
+@import "../../styles/variables";
+
 .index-page {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   min-height: 100vh;
-  background-color: #f8f9fc;
+  background-color: $background;
   padding-bottom: 0;
 }
 
+// Header section with user greeting
 .greeting-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 10rpx 10rpx;
-  // background: linear-gradient(135deg, var(--primary-color), #6a48fa);
-  background-color: #6a48fa; 
-  color: #fff;
-  border-radius: 0 0 30rpx 30rpx;
-  margin-bottom: 10rpx;
-  box-shadow: 0 8rpx 25rpx rgba(62, 42, 209, 0.25);
-  padding-top: 150rpx;
+  padding: 10rpx;
+  background-color: $primary-light;
+  color: $text-white;
+  box-shadow: $shadow-primary;
   
   .greeting-content {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     
     .greeting-text {
       font-size: var(--font-size-xl);
       font-weight: bold;
-      margin-bottom: 10rpx;
-    }
-    
-    .community-info {
-      font-size: var(--font-size-sm);
-      opacity: 0.8;
-      margin-bottom: 20rpx;
+      margin-bottom: $spacing-sm;
     }
     
     .quick-stats {
       display: flex;
       align-items: center;
-      margin-top: 15rpx;
+      margin-top: $spacing-md;
       
       .stat-item {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         align-items: flex-start;
         
         .stat-value {
           font-size: var(--font-size-lg);
           font-weight: bold;
-          color: #fff;
-          margin-bottom: 5rpx;
+          color: $text-white;
+          margin-bottom: $spacing-xs;
         }
         
         .stat-label {
           font-size: var(--font-size-xs);
-          color: rgba(255, 255, 255, 0.8);
+          color: $text-white-soft;
         }
       }
       
@@ -62,7 +52,7 @@
         width: 2rpx;
         height: 40rpx;
         background-color: rgba(255, 255, 255, 0.3);
-        margin: 0 20rpx;
+        margin: 0 $spacing-lg;
       }
     }
   }
@@ -70,63 +60,44 @@
   .avatar {
     width: 100rpx;
     height: 100rpx;
-    border-radius: 50rpx;
+    border-radius: $radius-full;
     border: 4rpx solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.15);
+    box-shadow: $shadow-sm;
   }
 }
 
+// Main content container
 .main-content {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   justify-content: space-between;
 }
 
 .appointments-section {
-  margin: 0 20rpx 30rpx;
+  margin: 0 $spacing-lg $spacing-xl;
   flex-grow: 1;
 }
 
-/* Define section colors */
-.section-colors {
-  &-blue {
-    background: linear-gradient(to right bottom, #3b7df8, #5590f5);
-    box-shadow: 0 6rpx 15rpx rgba(59, 125, 248, 0.2);
-  }
-  
-  &-purple {
-    background: linear-gradient(to right bottom, #9c6cfe, #b288fd);
-    box-shadow: 0 6rpx 15rpx rgba(156, 108, 254, 0.2);
-  }
-  
-  &-green {
-    background: linear-gradient(to right bottom, #4dd599, #63dfac);
-    box-shadow: 0 6rpx 15rpx rgba(77, 213, 153, 0.2);
-  }
-}
-
+// Section containers
 .section-container {
-  border-radius: 20rpx;
-  padding: 30rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  box-shadow: $shadow-md;
   position: relative;
   overflow: hidden;
   
   &.appointments-container {
-    background: linear-gradient(to right bottom, #3b7df8, #5590f5);
-    color: #fff;
+    background: $blue-gradient;
+    color: $text-white;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
   }
   
   &.chat-container {
-    background: linear-gradient(to right bottom, #9c6cfe, #b288fd);
-    color: #fff;
-    margin: 0 20rpx 30rpx;
+    border: 1px solid $primary-light;
   }
   
+  // Decorative circle overlay
   &::after {
     content: '';
     position: absolute;
@@ -142,53 +113,50 @@
   .section-header {
     display: flex;
     align-items: center;
-    margin-bottom: 20rpx;
     position: relative;
-    z-index: 1;
+    z-index: $z-base;
     
     .section-icon {
-      color: #fff;
-      margin-right: 15rpx;
+      color: $text-white;
+      margin-right: $spacing-md;
     }
     
     .section-title {
       font-size: var(--font-size-lg);
       font-weight: bold;
-      color: #fff;
+      color: $text-white;
     }
   }
 }
 
+// Appointments list
 .upcoming-appointments {
   flex: 1;
   position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
+  z-index: $z-base;
+  @include flex-column;
 }
 
 .appointment-card {
   display: flex;
   align-items: center;
-  padding: 20rpx;
+  padding: $spacing-lg;
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
-  border-radius: 15rpx;
-  margin-bottom: 20rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  border-radius: $radius-md;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-md;
   border: 1px solid rgba(255, 255, 255, 0.3);
   
   .appointment-date {
     width: 120rpx;
     min-width: 120rpx;
     height: 120rpx;
-    border-radius: 15rpx;
+    border-radius: $radius-md;
     background-color: rgba(255, 255, 255, 0.25);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20rpx;
+    color: $text-white;
+    @include flex-center;
+    margin-right: $spacing-lg;
     
     .date-label {
       font-size: var(--font-size-md);
@@ -203,88 +171,87 @@
     .court-name {
       font-size: var(--font-size-md);
       font-weight: bold;
-      color: #fff;
-      margin-bottom: 10rpx;
+      color: $text-white;
+      margin-bottom: $spacing-sm;
       display: block;
     }
     
     .time-slot {
       font-size: var(--font-size-sm);
-      color: rgba(255, 255, 255, 0.8);
+      color: $text-white-soft;
     }
   }
 }
 
-.remaining-appointments {
-  padding: 20rpx;
-  text-align: center;
-  font-size: var(--font-size-md);
-  color: rgba(255, 255, 255, 0.9);
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 15rpx;
-  margin-bottom: 20rpx;
-}
-
+// Empty states and info displays
 .empty-appointments {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   align-items: center;
   justify-content: center;
-  padding: 60rpx 30rpx;
+  padding: $spacing-xl $spacing-xl;
   position: relative;
-  z-index: 1;
+  z-index: $z-base;
   flex: 1;
   
   .empty-icon {
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 20rpx;
+    margin-bottom: $spacing-lg;
   }
   
   .empty-text {
     font-size: var(--font-size-md);
-    color: rgba(255, 255, 255, 0.8);
+    color: $text-white-soft;
   }
 }
 
+.remaining-appointments {
+  padding: $spacing-lg;
+  text-align: center;
+  font-size: var(--font-size-md);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: $radius-md;
+  margin-bottom: $spacing-lg;
+}
+
+// Button styles
 .make-appointment-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.25);
+  @include flex-center;
+  background-color: $primary;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
+  color: $text-white;
   height: 90rpx;
   border-radius: 45rpx;
   font-weight: bold;
   position: relative;
-  z-index: 1;
+  z-index: $z-base;
   backdrop-filter: blur(5px);
   margin-top: auto;
   
   .btn-text {
-    margin-left: 10rpx;
+    margin-left: $spacing-sm;
     font-size: var(--font-size-md);
   }
 }
 
+// Chat interface components
 .chat-input-container {
   display: flex;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 45rpx;
-  padding: 10rpx 20rpx;
-  margin-bottom: 15rpx;
+  padding: $spacing-sm $spacing-lg;
+  margin-bottom: $spacing-md;
   position: relative;
-  z-index: 1;
+  z-index: $z-base;
   backdrop-filter: blur(5px);
   
   .chat-input {
     flex: 1;
     height: 80rpx;
-    padding: 0 20rpx;
+    padding: 0 $spacing-lg;
     font-size: var(--font-size-md);
-    color: #fff;
+    color: $text-white;
   }
   
   .send-button {
@@ -292,9 +259,7 @@
     height: 80rpx;
     border-radius: 40rpx;
     background-color: rgba(255, 255, 255, 0.25);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
   }
 }
 
@@ -302,40 +267,9 @@
   font-size: var(--font-size-xs);
   color: rgba(255, 255, 255, 0.7);
   text-align: center;
-  padding: 0 20rpx;
+  padding: 0 $spacing-lg;
   position: relative;
-  z-index: 1;
+  z-index: $z-base;
 }
 
-.stats-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 20rpx 0;
-  position: relative;
-  z-index: 1;
-  
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    .stat-value {
-      font-size: 60rpx;
-      font-weight: bold;
-      color: #fff;
-      margin-bottom: 10rpx;
-    }
-    
-    .stat-label {
-      font-size: var(--font-size-sm);
-      color: rgba(255, 255, 255, 0.8);
-    }
-  }
-  
-  .stat-divider {
-    width: 2rpx;
-    height: 80rpx;
-    background-color: rgba(255, 255, 255, 0.3);
-  }
 }
