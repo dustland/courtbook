@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, Input } from "@tarojs/components";
+import { View, Text, Image, Input } from "@tarojs/components";
 import { useLoad } from "@tarojs/taro";
 import Taro from "@tarojs/taro";
 import { useState } from "react";
@@ -57,96 +57,109 @@ export default function Index() {
 
   return (
     <View className="index-page">
-      {/* Greeting Section */}
+      {/* Greeting Section with Stats */}
       <View className="greeting-section">
         <View className="greeting-content">
           <Text className="greeting-text">您好，{mockUser.username}</Text>
           <Text className="community-info">小区: {mockUser.roomNumber}</Text>
+
+          <View className="quick-stats">
+            <View className="stat-item">
+              <Text className="stat-value">{mockUser.gamesPlayed}</Text>
+              <Text className="stat-label">场次</Text>
+            </View>
+            <View className="stat-divider"></View>
+            <View className="stat-item">
+              <Text className="stat-value">{mockUser.attendanceRate}%</Text>
+              <Text className="stat-label">出勤率</Text>
+            </View>
+          </View>
         </View>
         <Image className="avatar" src={mockUser.avatar} />
       </View>
 
-      {/* Upcoming Appointments Section */}
-      <View className="section-container">
-        <View className="section-header">
-          <Icon value="calendar" size={20} className="section-icon" />
-          <Text className="section-title">即将到来的预约</Text>
-        </View>
+      <View className="main-content">
+        {/* Upcoming Appointments Section */}
+        <View className="appointments-section">
+          <View className="section-container appointments-container">
+            <View className="section-header">
+              <Icon value="calendar" size={20} className="section-icon" />
+              <Text className="section-title">即将到来的预约</Text>
+            </View>
 
-        {upcomingAppointments.length > 0 ? (
-          <ScrollView className="upcoming-appointments" scrollY>
-            {upcomingAppointments.map((appointment) => (
-              <View key={appointment.id} className="appointment-card">
-                <View className="appointment-date">
-                  <Text className="date-label">
-                    {formatAppointmentDate(appointment.date)}
-                  </Text>
+            <View className="upcoming-appointments">
+              {upcomingAppointments.length > 0 ? (
+                <>
+                  {/* Display only the first appointment */}
+                  <View
+                    key={upcomingAppointments[0].id}
+                    className="appointment-card"
+                  >
+                    <View className="appointment-date">
+                      <Text className="date-label">
+                        {formatAppointmentDate(upcomingAppointments[0].date)}
+                      </Text>
+                    </View>
+                    <View className="appointment-details">
+                      <Text className="court-name">
+                        {upcomingAppointments[0].court}
+                      </Text>
+                      <Text className="time-slot">
+                        {upcomingAppointments[0].startTime} -{" "}
+                        {upcomingAppointments[0].endTime}
+                      </Text>
+                    </View>
+                  </View>
+
+                  {/* If there are more appointments, show a summary line */}
+                  {upcomingAppointments.length > 1 && (
+                    <View className="remaining-appointments">
+                      <Text>还有 {upcomingAppointments.length - 1} 个预约</Text>
+                    </View>
+                  )}
+                </>
+              ) : (
+                <View className="empty-appointments">
+                  <Icon value="calendar" size={40} className="empty-icon" />
+                  <Text className="empty-text">您没有即将到来的预约</Text>
                 </View>
-                <View className="appointment-details">
-                  <Text className="court-name">{appointment.court}</Text>
-                  <Text className="time-slot">
-                    {appointment.startTime} - {appointment.endTime}
-                  </Text>
-                </View>
-              </View>
-            ))}
-          </ScrollView>
-        ) : (
-          <View className="empty-appointments">
-            <Icon value="calendar" size={40} className="empty-icon" />
-            <Text className="empty-text">您没有即将到来的预约</Text>
-          </View>
-        )}
+              )}
+            </View>
 
-        <View className="make-appointment-btn" onClick={navigateToAppointments}>
-          <Icon value="calendar" size={18} className="icon-white" />
-          <Text className="btn-text">预约场地</Text>
-        </View>
-      </View>
-
-      {/* Quick Chat Section */}
-      <View className="section-container">
-        <View className="section-header">
-          <Icon value="message" size={20} className="section-icon" />
-          <Text className="section-title">快速提问</Text>
-        </View>
-
-        <View className="chat-input-container">
-          <Input
-            className="chat-input"
-            value={chatInput}
-            onInput={(e) => setChatInput(e.detail.value)}
-            placeholder="询问预约信息或直接预约..."
-            confirmType="send"
-            onConfirm={handleSendMessage}
-          />
-          <View className="send-button" onClick={handleSendMessage}>
-            <Icon value="send" size={20} className="send-icon" />
+            <View
+              className="make-appointment-btn"
+              onClick={navigateToAppointments}
+            >
+              <Icon value="calendar" size={18} className="icon-white" />
+              <Text className="btn-text">预约场地</Text>
+            </View>
           </View>
         </View>
 
-        <Text className="chat-help-text">
-          例如: "我想预约明天下午的羽毛球场" 或 "查看本周可用时段"
-        </Text>
-      </View>
-
-      {/* Activity Summary */}
-      <View className="section-container">
-        <View className="section-header">
-          <Icon value="info" size={20} className="section-icon" />
-          <Text className="section-title">活动统计</Text>
-        </View>
-
-        <View className="stats-container">
-          <View className="stat-item">
-            <Text className="stat-value">{mockUser.gamesPlayed}</Text>
-            <Text className="stat-label">场次</Text>
+        {/* Quick Chat Section */}
+        <View className="section-container chat-container">
+          <View className="section-header">
+            <Icon value="message" size={20} className="section-icon" />
+            <Text className="section-title">快速提问</Text>
           </View>
-          <View className="stat-divider"></View>
-          <View className="stat-item">
-            <Text className="stat-value">{mockUser.attendanceRate}%</Text>
-            <Text className="stat-label">出勤率</Text>
+
+          <View className="chat-input-container">
+            <Input
+              className="chat-input"
+              value={chatInput}
+              onInput={(e) => setChatInput(e.detail.value)}
+              placeholder="询问预约信息或直接预约..."
+              confirmType="send"
+              onConfirm={handleSendMessage}
+            />
+            <View className="send-button" onClick={handleSendMessage}>
+              <Icon value="send" size={20} className="send-icon" />
+            </View>
           </View>
+
+          <Text className="chat-help-text">
+            例如: "我想预约明天下午的羽毛球场" 或 "查看本周可用时段"
+          </Text>
         </View>
       </View>
     </View>

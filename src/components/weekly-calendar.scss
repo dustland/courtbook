@@ -1,0 +1,185 @@
+.weekly-calendar {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  padding: 15px;
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    
+    .calendar-title {
+      font-size: var(--font-size-lg);
+      font-weight: bold;
+      color: #333;
+    }
+  }
+  
+  .days-row {
+    white-space: nowrap;
+    padding-bottom: 15px;
+    
+    .day-column {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      width: 140rpx;
+      border-radius: 8px;
+      
+      &.selected {
+        background-color: #e6f7ff;
+      }
+      
+      &.today {
+        .day-name, .day-date {
+          color: var(--primary-color);
+          font-weight: bold;
+        }
+      }
+      
+      .day-name {
+        font-size: var(--font-size-lg);
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      
+      .day-date {
+        font-size: var(--font-size-sm);
+        color: #666;
+        margin-bottom: 10px;
+      }
+      
+      .day-slots {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        
+        .mini-slot {
+          height: 8rpx;
+          margin-bottom: 4rpx;
+          border-radius: 4rpx;
+          
+          &.available {
+            background-color: #b7eb8f; // Green for available
+          }
+          
+          &.my-appointment {
+            background-color: var(--primary-color); // Primary color for user's appointments
+          }
+          
+          &.others-appointment {
+            background-color: #ffccc7; // Light red for others' appointments
+          }
+        }
+      }
+    }
+  }
+  
+  .day-detail {
+    background-color: #f5f7fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    
+    .day-detail-title {
+      font-size: var(--font-size-lg);
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    .time-slots-container {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    
+    .time-slot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      
+      &.available {
+        background-color: rgba(183, 235, 143, 0.3); // Light green for available
+        border: 1px solid #b7eb8f;
+      }
+      
+      &.my-appointment {
+        background-color: rgba(62, 42, 209, 0.1); // Light primary color for user's appointments
+        border: 1px solid var(--primary-color);
+      }
+      
+      &.others-appointment {
+        background-color: rgba(255, 204, 199, 0.3); // Light red for others' appointments
+        border: 1px solid #ffccc7;
+      }
+      
+      .time {
+        font-size: var(--font-size-lg);
+        color: #333;
+      }
+      
+      .status {
+        .available-text {
+          color: #52c41a;
+          font-weight: bold;
+          font-size: var(--font-size-md);
+        }
+        
+        .booked-by {
+          color: #999;
+          font-size: var(--font-size-md);
+          
+          &.my-booking {
+            color: var(--primary-color);
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  
+  .legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+      
+      .legend-color {
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+        margin-right: 6px;
+        
+        &.available {
+          background-color: #b7eb8f;
+        }
+        
+        &.my-appointment {
+          background-color: var(--primary-color);
+        }
+        
+        &.others-appointment {
+          background-color: #ffccc7;
+        }
+      }
+      
+      .legend-text {
+        font-size: var(--font-size-sm);
+        color: #666;
+      }
+    }
+  }
+} 

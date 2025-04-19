@@ -2,8 +2,9 @@ import { useState } from "react";
 import { View, Text } from "@tarojs/components";
 import { useLoad } from "@tarojs/taro";
 import Icon from "../../components/icon";
-import { mockAppointments } from "../../mock/data";
+import { mockAppointments, mockWeeklySchedule } from "../../mock/data";
 import AppointmentItem from "../../components/appointment-item";
+import WeeklyCalendar from "../../components/weekly-calendar";
 import { Appointment } from "../../types";
 import "./index.scss";
 
@@ -35,8 +36,17 @@ export default function Appointments() {
     (appointment) => !appointment.isPast
   ).length;
 
+  // Get the user's upcoming appointments for the weekly calendar
+  const upcomingAppointments = appointments.filter((app) => !app.isPast);
+
   return (
     <View className="appointments-page">
+      {/* Weekly Calendar Section */}
+      <WeeklyCalendar
+        weeklySchedule={mockWeeklySchedule}
+        userAppointments={upcomingAppointments}
+      />
+
       <View className="header">
         <Text className="title">我的预约</Text>
         <View className="badge">{upcomingCount}</View>
