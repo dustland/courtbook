@@ -69,11 +69,7 @@ export default function Index() {
       {/* Upcoming Appointments Section */}
       <View className="section-container">
         <View className="section-header">
-          <Icon
-            value="calendar"
-            size={20}
-            className="section-icon icon-primary"
-          />
+          <Icon value="calendar" size={20} className="section-icon" />
           <Text className="section-title">即将到来的预约</Text>
         </View>
 
@@ -103,7 +99,7 @@ export default function Index() {
         )}
 
         <View className="make-appointment-btn" onClick={navigateToAppointments}>
-          <Icon value="calendar" size={18} className="send-icon" />
+          <Icon value="calendar" size={18} className="icon-white" />
           <Text className="btn-text">预约场地</Text>
         </View>
       </View>
@@ -111,11 +107,7 @@ export default function Index() {
       {/* Quick Chat Section */}
       <View className="section-container">
         <View className="section-header">
-          <Icon
-            value="message"
-            size={20}
-            className="section-icon icon-primary"
-          />
+          <Icon value="message" size={20} className="section-icon" />
           <Text className="section-title">快速提问</Text>
         </View>
 
@@ -141,7 +133,7 @@ export default function Index() {
       {/* Activity Summary */}
       <View className="section-container">
         <View className="section-header">
-          <Icon value="info" size={20} className="section-icon icon-primary" />
+          <Icon value="info" size={20} className="section-icon" />
           <Text className="section-title">活动统计</Text>
         </View>
 

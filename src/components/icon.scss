@@ -9,6 +9,10 @@
   color: var(--primary-color);
 }
 
+.icon-white {
+  color: #fff;
+}
+
 .menu-icon {
   color: #666;
   margin-right: 12rpx;
@@ -19,7 +23,7 @@
 }
 
 .empty-icon {
-  color: #ddd;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .send-icon {
