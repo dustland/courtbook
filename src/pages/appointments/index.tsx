@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, Text } from "@tarojs/components";
-import { useLoad } from "@tarojs/taro";
+import { useLoad, navigateBack } from "@tarojs/taro";
 import Icon from "../../components/icon";
 import { mockAppointments, mockWeeklySchedule } from "../../mock/data";
 import AppointmentItem from "../../components/appointment-item";
@@ -21,6 +21,10 @@ export default function Appointments() {
     setAppointments((prev) =>
       prev.filter((appointment) => appointment.id !== id)
     );
+  };
+
+  const handleBack = () => {
+    navigateBack();
   };
 
   const filteredAppointments = (() => {
@@ -48,8 +52,13 @@ export default function Appointments() {
       />
 
       <View className="header">
-        <Text className="title">我的预约</Text>
-        <View className="badge">{upcomingCount}</View>
+        <View className="header-left">
+          <View className="back-button" onClick={handleBack}>
+            <Icon value="arrow-left" size={16} />
+          </View>
+          <Text className="title">我的预约</Text>
+          <View className="badge">{upcomingCount}</View>
+        </View>
       </View>
 
       <View className="filter-tabs">

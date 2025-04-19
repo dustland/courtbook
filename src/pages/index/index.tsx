@@ -1,19 +1,28 @@
 import { View, Text, Image, Input } from "@tarojs/components";
 import { useLoad } from "@tarojs/taro";
 import Taro from "@tarojs/taro";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "../../components/icon";
 import { mockAppointments, mockUser } from "../../mock/data";
 import "./index.scss";
+import QuickQuestion from "@/components/quick-question";
 
 export default function Index() {
   const [chatInput, setChatInput] = useState("");
-  // Filter only upcoming appointments
-  const upcomingAppointments = mockAppointments.filter((app) => !app.isPast);
+  const [upcomingAppointments, setUpcomingAppointments] = useState(
+    mockAppointments.filter((appointment) => !appointment.isPast).slice(0, 3)
+  );
 
   useLoad(() => {
-    console.log("Home page loaded");
+    console.log("Page loaded.");
   });
+
+  useEffect(() => {
+    Taro.setNavigationBarColor({
+      frontColor: "#ffffff",
+      backgroundColor: "#6a48fa",
+    });
+  }, []);
 
   const navigateToAppointments = () => {
     Taro.switchTab({
@@ -59,23 +68,20 @@ export default function Index() {
     <View className="index-page">
       {/* Greeting Section with Stats */}
       <View className="greeting-section">
+        <Image className="avatar" src={mockUser.avatar} />
         <View className="greeting-content">
-          <Text className="greeting-text">您好，{mockUser.username}</Text>
-          <Text className="community-info">小区: {mockUser.roomNumber}</Text>
-
           <View className="quick-stats">
             <View className="stat-item">
-              <Text className="stat-value">{mockUser.gamesPlayed}</Text>
               <Text className="stat-label">场次</Text>
+              <Text className="stat-value">{mockUser.gamesPlayed}</Text>
             </View>
             <View className="stat-divider"></View>
             <View className="stat-item">
-              <Text className="stat-value">{mockUser.attendanceRate}%</Text>
               <Text className="stat-label">出勤率</Text>
+              <Text className="stat-value">{mockUser.attendanceRate}%</Text>
             </View>
           </View>
         </View>
-        <Image className="avatar" src={mockUser.avatar} />
       </View>
 
       <View className="main-content">
@@ -83,8 +89,8 @@ export default function Index() {
         <View className="appointments-section">
           <View className="section-container appointments-container">
             <View className="section-header">
-              <Icon value="calendar" size={20} className="section-icon" />
-              <Text className="section-title">即将到来的预约</Text>
+              <Icon value="calendar" size={24} className="section-icon" />
+              <Text className="section-title">即将开始</Text>
             </View>
 
             <View className="upcoming-appointments">
@@ -97,7 +103,7 @@ export default function Index() {
                   >
                     <View className="appointment-date">
                       <Text className="date-label">
-                        {formatAppointmentDate(upcomingAppointments[0].date)}
+                        {upcomingAppointments[0].date.split("-")[2]}日
                       </Text>
                     </View>
                     <View className="appointment-details">
@@ -119,10 +125,7 @@ export default function Index() {
                   )}
                 </>
               ) : (
-                <View className="empty-appointments">
-                  <Icon value="calendar" size={40} className="empty-icon" />
-                  <Text className="empty-text">您没有即将到来的预约</Text>
-                </View>
+                <Text className="no-appointments">没有即将到来的预约</Text>
               )}
             </View>
 
@@ -130,36 +133,29 @@ export default function Index() {
               className="make-appointment-btn"
               onClick={navigateToAppointments}
             >
-              <Icon value="calendar" size={18} className="icon-white" />
               <Text className="btn-text">预约场地</Text>
             </View>
           </View>
         </View>
-
-        {/* Quick Chat Section */}
-        <View className="section-container chat-container">
-          <View className="section-header">
-            <Icon value="message" size={20} className="section-icon" />
-            <Text className="section-title">快速提问</Text>
+      </View>
+      {/* Quick Chat Section */}
+      <View className="chat-container">
+        <View className="quick-question">
+          <QuickQuestion question="帮我预定明天晚上 7 点的场地" />
+          <QuickQuestion question="最近可以订到的 1 小时的场地是什么时候？" />
+        </View>
+        <View className="chat-input-container">
+          <Input
+            className="chat-input"
+            value={chatInput}
+            onInput={(e) => setChatInput(e.detail.value)}
+            placeholder="询问预约信息或直接预约..."
+            confirmType="send"
+            onConfirm={handleSendMessage}
+          />
+          <View className="send-button" onClick={handleSendMessage}>
+            <Icon value="send" size={20} className="send-icon" />
           </View>
-
-          <View className="chat-input-container">
-            <Input
-              className="chat-input"
-              value={chatInput}
-              onInput={(e) => setChatInput(e.detail.value)}
-              placeholder="询问预约信息或直接预约..."
-              confirmType="send"
-              onConfirm={handleSendMessage}
-            />
-            <View className="send-button" onClick={handleSendMessage}>
-              <Icon value="send" size={20} className="send-icon" />
-            </View>
-          </View>
-
-          <Text className="chat-help-text">
-            例如: "我想预约明天下午的羽毛球场" 或 "查看本周可用时段"
-          </Text>
         </View>
       </View>
     </View>

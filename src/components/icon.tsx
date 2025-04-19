@@ -9,7 +9,7 @@ import {
   InfoOutlined,
   QuestionOutlined,
   ArrowRight,
-  SendGiftOutlined,
+  GuideOutlined,
 } from "@taroify/icons";
 
 // Import the CSS directly instead of through SCSS
@@ -22,7 +22,7 @@ const iconComponents: Record<string, React.FC<any>> = {
   message: ChatOutlined,
   calendar: CalendarOutlined,
   user: UserOutlined,
-  send: SendGiftOutlined,
+  send: GuideOutlined,
   settings: SettingOutlined,
   "chevron-right": ArrowRight,
   help: QuestionOutlined,

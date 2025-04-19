@@ -1,3 +1,5 @@
+@import "../styles/variables.scss";
+
 .chat-bubble {
   margin: 10px 15px;
   max-width: 80%;
@@ -7,7 +9,7 @@
   
   &.user {
     align-self: flex-end;
-    background-color: var(--primary-color);
+    background-color: $primary;
     color: white;
     margin-left: auto;
     
@@ -28,13 +30,13 @@
   }
   
   .message-content {
-    font-size: 16px;
+    font-size: $font-size-sm;
     line-height: 1.5;
     margin-bottom: 8px;
   }
   
   .timestamp {
-    font-size: 12px;
+    font-size: $font-size-sm;
     position: absolute;
     bottom: 4px;
     right: 12px;
@@ -48,7 +50,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     
     .slots-title {
-      font-size: 14px;
+      font-size: 18px;
       color: #333;
       margin-bottom: 8px;
       font-weight: bold;
@@ -72,7 +74,6 @@
       .slot-action {
         color: var(--primary-color);
         font-weight: bold;
-        font-size: 14px;
       }
     }
   }

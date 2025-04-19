@@ -1,69 +1,68 @@
+@import "../../styles/variables.scss";
+
 .index-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--background-color);
-  padding-bottom: 0;
+  height: 100vh;
 }
 
 // Header section with user greeting
 .greeting-section {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: var(--spacing-sm);
-  background-color: var(--primary-light);
-  color: var(--text-white);
-  box-shadow: var(--shadow-primary);
-  
+  align-items: center;
+  padding: $spacing-lg;
+  background-color: $primary-light;
+  color: $text-white;
+  border: none;
+
   .greeting-content {
     display: flex;
     flex-direction: column;
-    
+
     .greeting-text {
-      font-size: var(--font-size-xl);
+      font-size: $font-size-xl;
       font-weight: bold;
-      margin-bottom: var(--spacing-sm);
+      margin-bottom: $spacing-sm;
     }
-    
+
     .quick-stats {
       display: flex;
       align-items: center;
-      margin-top: var(--spacing-md);
-      
+
       .stat-item {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        
+        align-items: center;
+
         .stat-value {
-          font-size: var(--font-size-lg);
+          font-size: $font-size-lg;
           font-weight: bold;
-          color: var(--text-white);
-          margin-bottom: var(--spacing-xs);
+          color: $text-white;
+          margin-bottom: $spacing-xs;
         }
-        
+
         .stat-label {
-          font-size: var(--font-size-xs);
-          color: var(--text-white-soft);
+          font-size: $font-size-xs;
+          color: $text-white-soft;
         }
       }
-      
+
       .stat-divider {
         width: 2rpx;
         height: 40rpx;
         background-color: rgba(255, 255, 255, 0.3);
-        margin: 0 var(--spacing-lg);
+        margin: 0 $spacing-lg;
       }
     }
   }
-  
+
   .avatar {
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: var(--radius-full);
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: $radius-full;
     border: 4rpx solid rgba(255, 255, 255, 0.8);
-    box-shadow: var(--shadow-sm);
+    box-shadow: $shadow-sm;
   }
 }
 
@@ -72,63 +71,44 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  padding: $spacing-sm;
 }
 
 .appointments-section {
-  margin: 0 var(--spacing-lg) var(--spacing-xl);
-  flex-grow: 1;
+  grid-column: span 3;
+  margin: 0 0 $spacing-lg;
 }
 
 // Section containers
-.section-container {
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
-  box-shadow: var(--shadow-md);
+.appointments-container {
+  background: linear-gradient(160deg, #5683fe, #6c63ff);
+  color: $text-white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  min-height: 280rpx;
+  flex: 1;
+  border-radius: 15px;
+  padding: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
   position: relative;
-  overflow: hidden;
-  
-  &.appointments-container {
-    background: var(--blue-gradient);
-    color: var(--text-white);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  z-index: 1;
+
+  .section-icon {
+    color: $text-white;
+    margin-right: $spacing-md;
   }
-  
-  &.chat-container {
-    border: 1px solid var(--primary-light);
-  }
-  
-  // Decorative circle overlay
-  &::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 250rpx;
-    height: 250rpx;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    z-index: 0;
-  }
-  
-  .section-header {
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-    
-    .section-icon {
-      color: var(--text-white);
-      margin-right: var(--spacing-md);
-    }
-    
-    .section-title {
-      font-size: var(--font-size-lg);
-      font-weight: bold;
-      color: var(--text-white);
-    }
+
+  .section-title {
+    font-size: $font-size-md;
+    font-weight: bold;
+    color: $text-white;
   }
 }
 
@@ -139,52 +119,57 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-sm 0;
+  min-height: 200rpx;
 }
 
 .appointment-card {
   display: flex;
   align-items: center;
-  padding: var(--spacing-lg);
-  background-color: rgba(255, 255, 255, 0.2);
+  padding: $spacing-lg;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: $text-white;
   backdrop-filter: blur(10px);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--spacing-lg);
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  
+  border-radius: $radius-xl;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-md;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+
   .appointment-date {
     width: 120rpx;
     min-width: 120rpx;
     height: 120rpx;
-    border-radius: var(--radius-md);
-    background-color: rgba(255, 255, 255, 0.25);
-    color: var(--text-white);
+    border-radius: $radius-md;
+    background-color: rgba(255, 255, 255, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: var(--spacing-lg);
-    
+    margin-right: $spacing-lg;
+
     .date-label {
-      font-size: var(--font-size-md);
+      font-size: $font-size-md;
       font-weight: bold;
       text-align: center;
     }
   }
-  
+
   .appointment-details {
     flex: 1;
-    
+
     .court-name {
-      font-size: var(--font-size-md);
+      font-size: $font-size-md;
       font-weight: bold;
-      color: var(--text-white);
-      margin-bottom: var(--spacing-sm);
+      color: $text-white;
+      margin-bottom: $spacing-sm;
       display: block;
     }
-    
+
     .time-slot {
-      font-size: var(--font-size-sm);
-      color: var(--text-white-soft);
+      font-size: $font-size-sm;
+      color: $text-white-soft;
     }
   }
 }
@@ -195,29 +180,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-xl) var(--spacing-xl);
+  padding: $spacing-xl $spacing-xl;
   position: relative;
   z-index: 1;
   flex: 1;
-  
+
   .empty-icon {
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: $spacing-lg;
   }
-  
+
   .empty-text {
-    font-size: var(--font-size-md);
-    color: var(--text-white-soft);
+    font-size: $font-size-md;
+    color: $text-white-soft;
   }
 }
 
 .remaining-appointments {
-  padding: var(--spacing-lg);
+  padding: 20rpx;
   text-align: center;
-  font-size: var(--font-size-md);
-  color: rgba(255, 255, 255, 0.9);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--spacing-lg);
+  font-size: $font-size-md;
+  color: $text-white;
+  margin-bottom: 30rpx;
 }
 
 // Button styles
@@ -225,60 +209,66 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--primary-color);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--text-white);
+  background-color: rgba(49, 0, 128, 0.8);
   height: 90rpx;
   border-radius: 45rpx;
   font-weight: bold;
   position: relative;
   z-index: 1;
-  backdrop-filter: blur(5px);
-  margin-top: auto;
-  
+  width: 100%;
+  align-self: center;
+  margin-top: 20rpx;
+
   .btn-text {
-    margin-left: var(--spacing-sm);
-    font-size: var(--font-size-md);
+    font-size: $font-size-md;
+    color: $text-white;
   }
 }
 
-// Chat interface components
-.chat-input-container {
+// ChatGPT-style chat interface
+.chat-container {
   display: flex;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 45rpx;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  margin-bottom: var(--spacing-md);
-  position: relative;
-  z-index: 1;
-  backdrop-filter: blur(5px);
-  
-  .chat-input {
-    flex: 1;
-    height: 80rpx;
-    padding: 0 var(--spacing-lg);
-    font-size: var(--font-size-md);
-    color: var(--text-white);
-  }
-  
-  .send-button {
-    width: 80rpx;
-    height: 80rpx;
-    border-radius: 40rpx;
-    background-color: rgba(255, 255, 255, 0.25);
+  flex-direction: column;
+  background-color: $text-white;
+  padding: $spacing-md;
+  border-top: 1px solid #eee;
+
+  .chat-input-container {
     display: flex;
-    justify-content: center;
     align-items: center;
+    position: relative;
+    width: 100%;
+
+    .chat-input {
+      border: 1px solid $primary;
+      border-radius: 20rpx;
+      padding: $spacing-sm $spacing-lg;
+      height: 80rpx;
+      width: 100%;
+      color: $text-color;
+    }
+
+    .send-button {
+      position: absolute;
+      right: $spacing-sm;
+      width: 70rpx;
+      height: 70rpx;
+      border-radius: 35rpx;
+      background-color: $primary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .send-icon {
+        color: $text-white;
+      }
+    }
   }
 }
 
-.chat-help-text {
-  font-size: var(--font-size-xs);
-  color: rgba(255, 255, 255, 0.7);
+.no-appointments {
+  color: $text-white;
+  font-size: $font-size-md;
   text-align: center;
-  padding: 0 var(--spacing-lg);
-  position: relative;
-  z-index: 1;
+  padding: $spacing-lg;
 }

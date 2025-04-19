@@ -1,144 +1,274 @@
-import { useState, useEffect } from "react";
 import { View, Text } from "@tarojs/components";
-import { ActivityData } from "../types";
+import React, { useState, useEffect } from "react";
 import "./activity-chart.scss";
 
-interface ActivityChartProps {
-  data: ActivityData[];
+interface Activity {
+  date: string;
+  count: number;
 }
 
-// Structure to represent rows of activity data
-interface ActivityRow {
-  months: string[];
-  weeks: ActivityData[][];
+interface DayActivity {
+  date: string;
+  count: number;
+  level: number;
+  dayOfWeek: number; // 0-6 (Sunday-Saturday)
 }
 
-const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
-  const [activityRows, setActivityRows] = useState<ActivityRow[]>([]);
+interface WeekData {
+  days: (DayActivity | null)[];
+}
+
+interface MonthData {
+  name: string;
+  weeks: WeekData[];
+  year: number;
+  month: number; // 0-11
+}
+
+const ActivityChart: React.FC = () => {
+  const [months, setMonths] = useState<MonthData[]>([]);
+  const dayLabels = ["日", "一", "二", "三", "四", "五", "六"];
 
   useEffect(() => {
-    // Sort data by date
-    const sortedData = [...data].sort(
-      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-    );
-
-    const monthNames = [
-      "一月",
-      "二月",
-      "三月",
-      "四月",
-      "五月",
-      "六月",
-      "七月",
-      "八月",
-      "九月",
-      "十月",
-      "十一月",
-      "十二月",
+    // Mock data - replace with actual API call
+    const mockActivities: Activity[] = [
+      { date: "2023-01-15", count: 5 },
+      { date: "2023-01-16", count: 3 },
+      { date: "2023-01-18", count: 8 },
+      { date: "2023-01-22", count: 2 },
+      { date: "2023-01-25", count: 7 },
+      { date: "2023-02-01", count: 3 },
+      { date: "2023-02-03", count: 15 },
+      { date: "2023-02-08", count: 20 },
+      { date: "2023-02-10", count: 2 },
+      { date: "2023-02-15", count: 4 },
+      { date: "2023-02-22", count: 6 },
+      { date: "2023-03-05", count: 11 },
+      { date: "2023-03-10", count: 14 },
+      { date: "2023-03-15", count: 8 },
+      { date: "2023-03-22", count: 18 },
+      { date: "2023-04-01", count: 9 },
+      { date: "2023-04-05", count: 12 },
+      { date: "2023-04-12", count: 7 },
+      { date: "2023-04-20", count: 15 },
+      { date: "2023-05-02", count: 6 },
+      { date: "2023-05-09", count: 9 },
+      { date: "2023-05-15", count: 4 },
+      { date: "2023-05-25", count: 11 },
+      { date: "2023-06-03", count: 14 },
+      { date: "2023-06-10", count: 8 },
+      { date: "2023-06-18", count: 5 },
+      { date: "2023-06-25", count: 9 },
+      { date: "2023-07-02", count: 7 },
+      { date: "2023-07-10", count: 12 },
+      { date: "2023-07-22", count: 18 },
+      { date: "2023-07-29", count: 6 },
+      { date: "2023-08-05", count: 9 },
+      { date: "2023-08-15", count: 13 },
+      { date: "2023-08-22", count: 4 },
+      { date: "2023-09-03", count: 7 },
+      { date: "2023-09-10", count: 14 },
+      { date: "2023-09-22", count: 9 },
+      { date: "2023-10-04", count: 5 },
+      { date: "2023-10-12", count: 8 },
+      { date: "2023-10-22", count: 11 },
+      { date: "2023-10-29", count: 6 },
+      { date: "2023-11-05", count: 9 },
+      { date: "2023-11-12", count: 14 },
+      { date: "2023-11-20", count: 7 },
+      { date: "2023-11-28", count: 5 },
+      { date: "2023-12-03", count: 12 },
+      { date: "2023-12-10", count: 7 },
+      { date: "2023-12-18", count: 9 },
+      { date: "2023-12-25", count: 4 },
     ];
 
-    // Organize data into rows with approximately 4-5 weeks each
-    const rows: ActivityRow[] = [];
-    let currentRow: ActivityRow = { months: [], weeks: [] };
-    let weekCount = 0;
+    generateActivityGrid(mockActivities);
+  }, []);
 
-    // Group by weeks first
-    const allWeeks: ActivityData[][] = [];
-    for (let i = 0; i < sortedData.length; i += 7) {
-      const weekData = sortedData.slice(i, i + 7);
-      if (weekData.length > 0) {
-        allWeeks.push(weekData);
+  const generateActivityGrid = (activities: Activity[]) => {
+    const monthsData: MonthData[] = [];
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    // Get current year
+    const year = new Date().getFullYear();
+
+    // Create data structure for all months with weeks
+    for (let monthIndex = 0; monthIndex < 12; monthIndex++) {
+      const firstDay = new Date(year, monthIndex, 1);
+      const lastDay = new Date(year, monthIndex + 1, 0);
+      const daysInMonth = lastDay.getDate();
+
+      // Calculate first day of week offset (Sunday = 0, Saturday = 6)
+      const firstDayOfWeek = firstDay.getDay();
+
+      // Create weeks array
+      const weeks: WeekData[] = [];
+      let currentWeek: (DayActivity | null)[] = Array(7).fill(null);
+
+      // Add empty days before the first day of month
+      for (let i = 0; i < firstDayOfWeek; i++) {
+        currentWeek[i] = null;
       }
+
+      // Add all days of the month
+      for (let day = 1; day <= daysInMonth; day++) {
+        const date = new Date(year, monthIndex, day);
+        const dayOfWeek = date.getDay();
+        const dateStr = `${year}-${String(monthIndex + 1).padStart(
+          2,
+          "0"
+        )}-${String(day).padStart(2, "0")}`;
+
+        // Create day activity object
+        const dayActivity: DayActivity = {
+          date: dateStr,
+          count: 0,
+          level: 0,
+          dayOfWeek,
+        };
+
+        // If we need to start a new week
+        if (dayOfWeek === 0 && day > 1) {
+          weeks.push({ days: [...currentWeek] });
+          currentWeek = Array(7).fill(null);
+        }
+
+        // Add day to current week
+        currentWeek[dayOfWeek] = dayActivity;
+
+        // If it's the last day of the month, add the final week
+        if (day === daysInMonth) {
+          // Fill remaining days with null
+          for (let i = dayOfWeek + 1; i < 7; i++) {
+            currentWeek[i] = null;
+          }
+          weeks.push({ days: [...currentWeek] });
+        }
+      }
+
+      monthsData.push({
+        name: monthNames[monthIndex],
+        weeks,
+        year,
+        month: monthIndex,
+      });
     }
 
-    // Now group weeks into rows (4-5 weeks per row)
-    const weeksPerRow = 5;
-    for (let weekIndex = 0; weekIndex < allWeeks.length; weekIndex++) {
-      const week = allWeeks[weekIndex];
+    // Fill in activity data
+    activities.forEach((activity) => {
+      const date = new Date(activity.date);
+      const monthIndex = date.getMonth();
+      const day = date.getDate();
+      const dayOfWeek = date.getDay();
 
-      // First week of first day of the week
-      const firstDate = new Date(week[0].date);
-      const monthIndex = firstDate.getMonth();
+      // Find the correct month
+      const monthData = monthsData[monthIndex];
+      if (monthData) {
+        // Find the correct week and day
+        for (const week of monthData.weeks) {
+          const dayActivity = week.days.find(
+            (d) => d !== null && d.date === activity.date
+          );
 
-      // Add month label if it's the first day of a month or first week in a row
-      if (firstDate.getDate() <= 7 || weekCount === 0) {
-        currentRow.months.push(monthNames[monthIndex]);
-      } else {
-        currentRow.months.push("");
+          if (dayActivity) {
+            dayActivity.count = activity.count;
+
+            // Set activity level
+            let level = 0;
+            if (activity.count > 0) {
+              if (activity.count <= 5) level = 1;
+              else if (activity.count <= 10) level = 2;
+              else if (activity.count <= 15) level = 3;
+              else level = 4;
+            }
+
+            dayActivity.level = level;
+            break;
+          }
+        }
       }
+    });
 
-      currentRow.weeks.push(week);
-      weekCount++;
-
-      // Start a new row after weeksPerRow weeks
-      if (weekCount === weeksPerRow && weekIndex < allWeeks.length - 1) {
-        rows.push(currentRow);
-        currentRow = { months: [], weeks: [] };
-        weekCount = 0;
-      }
-    }
-
-    // Add the last row if it has any weeks
-    if (currentRow.weeks.length > 0) {
-      rows.push(currentRow);
-    }
-
-    setActivityRows(rows);
-  }, [data]);
-
-  const getColorClass = (count: number) => {
-    if (count === 0) return "level-0";
-    if (count === 1) return "level-1";
-    if (count === 2) return "level-2";
-    if (count === 3) return "level-3";
-    return "level-4";
+    setMonths(monthsData);
   };
+
+  // Group months into rows (3 months per row)
+  const getMonthRows = (): MonthData[][] => {
+    const rows: MonthData[][] = [];
+    for (let i = 0; i < months.length; i += 3) {
+      rows.push(months.slice(i, Math.min(i + 3, months.length)));
+    }
+    return rows;
+  };
+
+  const monthRows = getMonthRows();
 
   return (
     <View className="activity-chart">
-      <Text className="chart-title">活动频率</Text>
+      <View className="contribution-grid">
+        {monthRows.map((row, rowIndex) => (
+          <View key={`row-${rowIndex}`} className="month-row">
+            {row.map((month, monthIndex) => (
+              <View
+                key={`month-${rowIndex}-${monthIndex}`}
+                className="month-container"
+              >
+                <Text className="month-name">{month.name}</Text>
 
-      {activityRows.map((row, rowIndex) => (
-        <View key={rowIndex} className="activity-row">
-          <View className="months-row">
-            {row.months.map((month, index) => (
-              <Text key={index} className="month-label">
-                {month}
-              </Text>
-            ))}
-          </View>
-
-          <View className="chart-grid">
-            <View className="day-labels">
-              <Text className="day-label">周一</Text>
-              <Text className="day-label">周三</Text>
-              <Text className="day-label">周五</Text>
-              <Text className="day-label">周日</Text>
-            </View>
-
-            <View className="weeks-container">
-              {row.weeks.map((week, weekIndex) => (
-                <View key={weekIndex} className="week-column">
-                  {week.map((day, dayIndex) => (
-                    <View
-                      key={`${weekIndex}-${dayIndex}`}
-                      className={`day-cell ${getColorClass(day.count)}`}
-                    >
-                      <View className="tooltip">
-                        <Text>{day.date}</Text>
-                        <Text>{day.count} 活动</Text>
-                      </View>
-                    </View>
+                <View className="days-header">
+                  {dayLabels.map((label, i) => (
+                    <Text key={`label-${i}`} className="day-label">
+                      {i % 2 === 0 ? label : ""}
+                    </Text>
                   ))}
                 </View>
-              ))}
-            </View>
+
+                {month.weeks.map((week, weekIndex) => (
+                  <View key={`week-${weekIndex}`} className="days-grid">
+                    {week.days.map((day, dayIndex) =>
+                      day !== null ? (
+                        <View
+                          key={`day-${dayIndex}`}
+                          className={`day-cell level-${day.level}`}
+                        >
+                          {day.count > 0 && (
+                            <View className="tooltip">
+                              <Text className="tooltip-text">
+                                {day.count} activities on {day.date}
+                              </Text>
+                            </View>
+                          )}
+                        </View>
+                      ) : (
+                        <View
+                          key={`empty-${dayIndex}`}
+                          className="day-cell empty"
+                        />
+                      )
+                    )}
+                  </View>
+                ))}
+              </View>
+            ))}
           </View>
-        </View>
-      ))}
+        ))}
+      </View>
 
       <View className="legend">
-        <Text className="legend-text">活动强度:</Text>
         <View className="legend-items">
           <View className="legend-item">
             <View className="color-box level-0"></View>
@@ -155,10 +285,6 @@ const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
           <View className="legend-item">
             <View className="color-box level-3"></View>
             <Text>高</Text>
-          </View>
-          <View className="legend-item">
-            <View className="color-box level-4"></View>
-            <Text>极高</Text>
           </View>
         </View>
       </View>

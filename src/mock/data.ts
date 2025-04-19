@@ -9,7 +9,7 @@ import {
 
 // Mock user data
 export const mockUser: UserInfo = {
-  avatar: "https://i.pravatar.cc/48",
+  avatar: "/assets/images/avatar-placeholder.jpeg",
   username: "张三",
   roomNumber: "A-101",
   gamesPlayed: 28,

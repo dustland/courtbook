@@ -21,7 +21,6 @@
 }
 
 .profile-header .user-info .username {
-  font-size: 20px;
   font-weight: bold;
   color: #333;
   display: block;
@@ -29,7 +28,6 @@
 }
 
 .profile-header .user-info .room-number {
-  font-size: 14px;
   color: #666;
 }
 
@@ -49,7 +47,6 @@
 }
 
 .stats-box .stat-item .stat-value {
-  font-size: 28px;
   font-weight: bold;
   color: var(--primary-color);
   display: block;
@@ -57,7 +54,6 @@
 }
 
 .stats-box .stat-item .stat-label {
-  font-size: 14px;
   color: #666;
 }
 
@@ -75,7 +71,6 @@
 }
 
 .section-header .section-title {
-  font-size: 16px;
   font-weight: bold;
   color: #333;
   margin-left: 8px;
@@ -92,7 +87,9 @@
 .menu-list .menu-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 15px;
+  width: 100%;
   border-bottom: 1px solid #f5f5f5;
 }
 
@@ -103,7 +100,6 @@
 .menu-list .menu-item .menu-text {
   flex: 1;
   margin-left: 10px;
-  font-size: 14px;
   color: #333;
 }
 

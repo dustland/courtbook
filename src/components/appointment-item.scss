@@ -1,9 +1,11 @@
+@import "../styles/variables.scss";
+
 .appointment-item {
-  background-color: #fff;
+  background-color: $text-white;
   border-radius: 12px;
   padding: 15px;
   margin: 0 15px 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: $shadow-sm;
   display: flex;
   flex-direction: column;
   
@@ -11,45 +13,52 @@
     opacity: 0.7;
   }
   
+  .appointment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  
   .appointment-status {
-    margin-bottom: 10px;
-    
     .past-indicator {
-      background-color: #999;
-      color: white;
-      font-size: 12px;
+      background-color: $text-color-light;
+      color: $text-white;
       padding: 2px 8px;
       border-radius: 10px;
     }
     
     .upcoming-indicator {
-      background-color: var(--primary-color);
-      color: white;
-      font-size: 12px;
+      background-color: $primary;
+      color: $text-white;
       padding: 2px 8px;
       border-radius: 10px;
     }
   }
   
   .appointment-info {
+    display: flex;
+    flex-direction: column;
+    
     .appointment-court {
-      font-size: 18px;
       font-weight: bold;
-      color: #333;
+      color: $text-color;
       margin-bottom: 8px;
       display: block;
     }
     
+    .appointment-time-info {
+      display: flex;
+      flex-direction: column;
+    }
+    
     .appointment-date {
-      font-size: 14px;
-      color: #666;
+      color: $text-color-light;
       margin-bottom: 4px;
       display: block;
     }
     
     .appointment-time {
-      font-size: 14px;
-      color: #666;
+      color: $text-color-light;
       margin-bottom: 12px;
       display: block;
     }
@@ -57,13 +66,14 @@
   
   .cancel-button {
     align-self: flex-end;
-    background-color: #ff4d4f;
-    color: white;
-    font-size: 14px;
+    background-color: $error;
+    color: $text-white;
     line-height: 1;
     border-radius: 6px;
     margin: 0;
     padding: 5px 10px;
+    height: auto;
+    min-height: auto;
   }
   
   .confirm-actions {
@@ -71,21 +81,22 @@
     justify-content: flex-end;
     
     .confirm-yes, .confirm-no {
-      font-size: 14px;
       line-height: 1;
       border-radius: 6px;
       margin: 0 0 0 10px;
       padding: 5px 10px;
+      height: auto;
+      min-height: auto;
     }
     
     .confirm-yes {
-      background-color: #ff4d4f;
-      color: white;
+      background-color: $error;
+      color: $text-white;
     }
     
     .confirm-no {
-      background-color: #f5f5f5;
-      color: #666;
+      background-color: $secondary;
+      color: $text-color-light;
     }
   }
 } 

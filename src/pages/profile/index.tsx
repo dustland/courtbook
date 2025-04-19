@@ -3,7 +3,7 @@ import { useLoad } from "@tarojs/taro";
 import Taro from "@tarojs/taro";
 import Icon from "../../components/icon";
 import ActivityChart from "../../components/activity-chart";
-import { mockUser, mockActivityData } from "../../mock/data";
+import { mockUser } from "../../mock/data";
 import "./index.scss";
 
 export default function Profile() {
@@ -44,7 +44,7 @@ export default function Profile() {
         <Text className="section-title">活动统计</Text>
       </View>
 
-      <ActivityChart data={mockActivityData} />
+      <ActivityChart />
 
       <View className="menu-list">
         <View className="menu-item">
@@ -72,13 +72,6 @@ export default function Profile() {
           <View className="menu-item-left">
             <Icon value="info" size={20} className="menu-icon" />
             <Text className="menu-text">关于</Text>
-          </View>
-          <Icon value="chevron-right" size={16} className="menu-arrow" />
-        </View>
-        <View className="menu-item" onClick={navigateToIcons}>
-          <View className="menu-item-left">
-            <Icon value="chat" size={20} className="menu-icon" />
-            <Text className="menu-text">图标展示</Text>
           </View>
           <Icon value="chevron-right" size={16} className="menu-arrow" />
         </View>

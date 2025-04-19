@@ -71,17 +71,19 @@ export default function Chat() {
         ))}
       </ScrollView>
 
-      <View className="input-area">
-        <Input
-          className="message-input"
-          value={inputText}
-          onInput={(e) => setInputText(e.detail.value)}
-          placeholder="输入您的问题..."
-          confirmType="send"
-          onConfirm={handleSend}
-        />
-        <View className="send-button" onClick={handleSend}>
-          <Icon value="send" size={20} className="send-icon" />
+      <View className="chat-container">
+        <View className="chat-input-container">
+          <Input
+            className="chat-input"
+            value={inputText}
+            onInput={(e) => setInputText(e.detail.value)}
+            placeholder="输入您的问题..."
+            confirmType="send"
+            onConfirm={handleSend}
+          />
+          <View className="send-button" onClick={handleSend}>
+            <Icon value="send" size={20} className="send-icon" />
+          </View>
         </View>
       </View>
     </View>

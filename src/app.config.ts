@@ -4,18 +4,20 @@ export default defineAppConfig({
     "pages/chat/index",
     "pages/appointments/index",
     "pages/profile/index",
-    "pages/icons/index",
   ],
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",
     navigationBarTitleText: "CourtBook",
     navigationBarTextStyle: "black",
+    // navigationStyle: "custom",
+    enablePullDownRefresh: true,
   },
   tabBar: {
     color: "#999",
     selectedColor: "#3E2AD1",
     backgroundColor: "#fff",
+    borderStyle: "white",
     list: [
       {
         pagePath: "pages/index/index",
@@ -43,4 +45,5 @@ export default defineAppConfig({
       },
     ],
   },
+  debug: true,
 });

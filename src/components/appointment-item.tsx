@@ -34,20 +34,26 @@ const AppointmentItem: React.FC<AppointmentItemProps> = ({
 
   return (
     <View className={`appointment-item ${appointment.isPast ? "past" : ""}`}>
-      <View className="appointment-status">
-        {appointment.isPast ? (
-          <Text className="past-indicator">已完成</Text>
-        ) : (
-          <Text className="upcoming-indicator">待进行</Text>
-        )}
+      <View className="appointment-header">
+        <View className="appointment-status">
+          {appointment.isPast ? (
+            <Text className="past-indicator">已完成</Text>
+          ) : (
+            <Text className="upcoming-indicator">待进行</Text>
+          )}
+        </View>
       </View>
 
       <View className="appointment-info">
         <Text className="appointment-court">{appointment.court}</Text>
-        <Text className="appointment-date">{formatDate(appointment.date)}</Text>
-        <Text className="appointment-time">
-          {appointment.startTime} - {appointment.endTime}
-        </Text>
+        <View className="appointment-time-info">
+          <Text className="appointment-date">
+            {formatDate(appointment.date)}
+          </Text>
+          <Text className="appointment-time">
+            {appointment.startTime} - {appointment.endTime}
+          </Text>
+        </View>
       </View>
 
       {!appointment.isPast && !showConfirm && (
