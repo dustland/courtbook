@@ -4,53 +4,71 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100%;
   background-color: vars.$background;
+  position: relative;
 
   .messages-container {
     flex: 1;
-    padding: 10px 0;
+    width: 100%;
+    padding: 10px;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
   }
 
-  // ChatGPT-style chat interface
   .chat-container {
+    padding: 10px 15px 20px;
+    border-top: 1px solid #e0e0e0;
+    background-color: white;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .chat-input-container {
     display: flex;
-    flex-direction: column;
-    background-color: vars.$text-white;
-    padding: vars.$spacing-md;
-    border-top: 1px solid #eee;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 5px 10px;
+  }
 
-    .chat-input-container {
-      display: flex;
-      align-items: center;
-      position: relative;
-      width: 100%;
+  .chat-input {
+    flex: 1;
+    padding: 8px 0;
+    font-size: vars.$font-size-sm;
+    border: none;
+    background-color: transparent;
+  }
 
-      .chat-input {
-        border: 1px solid vars.$primary;
-        border-radius: 20rpx;
-        padding: vars.$spacing-sm vars.$spacing-lg;
-        height: 80rpx;
-        width: 100%;
-        color: vars.$text-color;
-      }
+  .send-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: vars.$primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
 
-      .send-button {
-        position: absolute;
-        right: vars.$spacing-sm;
-        width: 70rpx;
-        height: 70rpx;
-        border-radius: 35rpx;
-        background-color: vars.$primary;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .send-icon {
-          color: vars.$text-white;
-        }
-      }
+    .send-icon {
+      color: vars.$text-white;
     }
+
+    &.disabled {
+      background-color: vars.$primary-light;
+      opacity: 0.7;
+    }
+  }
+
+  .typing-indicator {
+    align-self: flex-start;
+    margin: 10px;
   }
 }

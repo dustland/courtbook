@@ -1,0 +1,47 @@
+# Node.js dependencies
+node_modules/
+
+# Built output
+built/
+dist/
+lib/
+coverage/
+
+# Lock files (uncomment if you want to ignore them)
+# package-lock.json
+# yarn.lock
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Tencent CloudBase
+tcb-functions-dev.json
+tcb.js
+
+# TypeScript
+tsconfig.tsbuildinfo
+
+# Generated files
+*.js.map 

@@ -1,8 +1,9 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "courtbook",
+  "projectname": "CourtBook",
   "description": "Court Book",
-  "appid": "touristappid",
+  "appid": "wxaed65dd577328f04",
+  "cloudfunctionRoot": "./cloudfunctions",
   "setting": {
     "urlCheck": true,
     "es6": true,

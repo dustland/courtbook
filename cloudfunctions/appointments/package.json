@@ -1,0 +1,26 @@
+{
+  "name": "appointments",
+  "version": "1.0.0",
+  "description": "Cloud function for court appointment management",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "deploy": "echo 'Please use WeChat Developer Tools to deploy this function'",
+    "invoke": "node tests/invoke-local.js",
+    "test:seed": "npm run invoke -- '{\"action\":\"seedData\"}'",
+    "test:slots": "npm run invoke -- '{\"action\":\"queryAvailableSlots\",\"data\":{\"startDate\":\"2023-08-01\",\"endDate\":\"2023-08-01\"}}'",
+    "test:create": "npm run invoke -- '{\"action\":\"createAppointment\",\"data\":{\"userId\":\"test-user-123\",\"courtId\":\"court-1\",\"date\":\"2023-08-01\",\"startTime\":\"14:00\",\"endTime\":\"15:00\"}}'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.5",
+    "@serverless/tencent-scf": "^3.0.0",
+    "scf-cli": "^1.0.8",
+    "typescript": "^5.1.3"
+  }
+}

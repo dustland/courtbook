@@ -135,7 +135,50 @@ export default defineAppConfig({
 2. 选择「上传并部署」选项
 3. 对每个云函数重复此操作
 
-## 五、构建和发布
+#### 可用云函数
+
+项目包含以下云函数：
+
+- **appointments**：场地预约管理，具有以下功能：
+  - 根据日期范围查询可用时段
+  - 创建新预约
+  - 获取用户预约列表
+  - 取消已有预约
+
+若要部署使用 TypeScript 编写的云函数：
+
+```bash
+# 进入函数目录
+cd cloudfunctions/appointments
+
+# 安装依赖
+npm install
+
+# 构建 TypeScript 代码
+npm run build
+
+# 然后通过微信开发者工具上传
+```
+
+有关每个函数 API 的更多详细信息，请参阅相应函数目录中的 README.md 文件。
+
+## 五、AI 集成
+
+应用程序使用微信云开发 AI SDK 提供会话式预约功能：
+
+1. AI 助手通过 `src/services/ai-assistant.ts` 服务集成
+2. 该服务连接到微信云 AI SDK（`wx.cloud.wxExtendAi`）
+3. 使用示例可以在 `src/pages/chat/ai-chat-example.tsx` 中找到
+
+要启用 AI 功能：
+
+1. 确保您的微信云项目在云控制台中启用了 AI 功能
+2. 该服务默认使用 GLM-4 模型，但可以配置其他模型
+3. 费用基于微信云计费标准的 API 使用量
+
+有关更多信息，请参阅[微信 AI SDK 文档](https://docs.cloudbase.net/ai/sdk-reference/wxExtendAi#chatmodelstreamtext)。
+
+## 六、构建和发布
 
 ### 1. 构建生产版本
 

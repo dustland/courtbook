@@ -135,7 +135,50 @@ In the cloud development console, create the following database collections:
 2. Select the "Upload and Deploy" option
 3. Repeat this operation for each cloud function
 
-## V. Build and Publish
+#### Available Cloud Functions
+
+The project includes the following cloud functions:
+
+- **appointments**: Manages court bookings with the following features:
+  - Query available time slots based on date range
+  - Create new appointments
+  - Retrieve user appointments
+  - Cancel existing appointments
+
+To deploy a cloud function with TypeScript:
+
+```bash
+# Navigate to the function directory
+cd cloudfunctions/appointments
+
+# Install dependencies
+npm install
+
+# Build TypeScript code
+npm run build
+
+# Then upload using WeChat Developer Tools
+```
+
+For more details about each function's API, refer to the README.md file in the respective function directory.
+
+## V. AI Integration
+
+The application uses WeChat's cloud AI SDK to provide conversational booking capabilities:
+
+1. The AI assistant is integrated via the `src/services/ai-assistant.ts` service
+2. This service connects to the WeChat Cloud AI SDK (`wx.cloud.wxExtendAi`)
+3. Example usage can be found in `src/pages/chat/ai-chat-example.tsx`
+
+To enable AI features:
+
+1. Make sure your WeChat Cloud project has AI capabilities enabled in the cloud console
+2. The service uses GLM-4 model by default, but other models can be configured
+3. Cost is based on API usage per the WeChat Cloud pricing
+
+For more information, refer to the [WeChat AI SDK documentation](https://docs.cloudbase.net/ai/sdk-reference/wxExtendAi#chatmodelstreamtext).
+
+## VI. Build and Publish
 
 ### 1. Build Production Version
 

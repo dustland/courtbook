@@ -1,19 +1,76 @@
 import { View, Text } from "@tarojs/components";
-import { ChatMessage, TimeSlot } from "../types";
+import ReactMarkdown from "react-markdown";
+import { TimeSlot } from "../types";
+import Icon from "./icon";
 import "./chat-bubble.scss";
 
-interface ChatBubbleProps {
-  message: ChatMessage;
-  onSlotSelect?: (slot: TimeSlot) => void;
+// Extended TimeSlot with date property if needed
+interface ExtendedTimeSlot extends TimeSlot {
+  date?: string;
 }
 
-const ChatBubble: React.FC<ChatBubbleProps> = ({ message, onSlotSelect }) => {
+// Updated message interface to match our chat component
+interface Message {
+  id: string;
+  sender: "user" | "assistant";
+  text: string;
+  timestamp: string;
+  recordId?: string;
+  availableSlots?: ExtendedTimeSlot[];
+}
+
+interface ChatBubbleProps {
+  message: Message;
+  onSlotSelect?: (slot: ExtendedTimeSlot) => void;
+  onFeedback?: (messageId: string, isPositive: boolean) => void;
+}
+
+// Custom renderer components for React Markdown
+const MarkdownComponents = {
+  // Override paragraph to use Text component
+  p: ({ children }) => <Text className="markdown-paragraph">{children}</Text>,
+  // Override text elements to use Text component
+  text: ({ children }) => <Text>{children}</Text>,
+  // Override strong/bold elements
+  strong: ({ children }) => <Text className="markdown-bold">{children}</Text>,
+  // Override emphasis/italic elements
+  em: ({ children }) => <Text className="markdown-italic">{children}</Text>,
+  // Override list items
+  li: ({ children }) => (
+    <View className="markdown-list-item">
+      <Text>• {children}</Text>
+    </View>
+  ),
+  // Override links
+  a: ({ href, children }) => (
+    <Text
+      className="markdown-link"
+      onClick={() => {
+        /* Handle link click */
+      }}
+    >
+      {children}
+    </Text>
+  ),
+};
+
+const ChatBubble: React.FC<ChatBubbleProps> = ({
+  message,
+  onSlotSelect,
+  onFeedback,
+}) => {
   const isUser = message.sender === "user";
 
   return (
     <View className={`chat-bubble ${isUser ? "user" : "assistant"}`}>
       <View className="message-content">
-        <Text>{message.text}</Text>
+        {isUser ? (
+          <Text>{message.text}</Text>
+        ) : (
+          <ReactMarkdown components={MarkdownComponents}>
+            {message.text}
+          </ReactMarkdown>
+        )}
       </View>
 
       {message.availableSlots && message.availableSlots.length > 0 && (
@@ -34,7 +91,29 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ message, onSlotSelect }) => {
         </View>
       )}
 
-      <Text className="timestamp">{message.timestamp.split(" ")[1]}</Text>
+      {!isUser && onFeedback && message.text && (
+        <View className="feedback-buttons">
+          <View
+            className="feedback-button"
+            onClick={() => onFeedback(message.id, true)}
+          >
+            <Icon value="thumb-up" size={16} />
+          </View>
+          <View
+            className="feedback-button"
+            onClick={() => onFeedback(message.id, false)}
+          >
+            <Icon value="thumb-down" size={16} />
+          </View>
+        </View>
+      )}
+
+      <Text className="timestamp">
+        {typeof message.timestamp === "string" &&
+        message.timestamp.includes(" ")
+          ? message.timestamp.split(" ")[1]
+          : message.timestamp}
+      </Text>
     </View>
   );
 };

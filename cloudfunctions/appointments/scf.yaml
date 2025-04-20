@@ -1,0 +1,23 @@
+app: courtbook
+stage: dev
+component: scf
+name: appointments
+
+inputs:
+  name: appointments
+  src: ./
+  handler: built/index.main
+  runtime: Nodejs12.16
+  region: ap-shanghai
+  description: Court booking appointments management function
+  memorySize: 128
+  timeout: 10
+  environment:
+    variables:
+      ENV_ID: ${env:ENV_ID}
+  events:
+    - apigw:
+        parameters:
+          endpoints:
+            - path: /appointments
+              method: POST

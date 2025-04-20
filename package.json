@@ -10,7 +10,8 @@
     "framework": "React"
   },
   "scripts": {
-    "build:weapp": "taro build --type weapp",
+    "build:cloudfunctions": "cd cloudfunctions/appointments && pnpm build",
+    "build:weapp": "pnpm build:cloudfunctions && taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
     "build:tt": "taro build --type tt",
@@ -57,6 +58,7 @@
     "@tarojs/taro": "4.0.12",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
     "redux-logger": "^3.0.6",

@@ -23,6 +23,15 @@ export default defineConfig<"webpack5">(async (merge) => {
       patterns: [
         { from: "src/assets/", to: "dist/assets/" },
         { from: "src/assets/images/", to: "dist/assets/images/" },
+        {
+          from: "cloudfunctions/",
+          to: "dist/cloudfunctions/",
+          ignore: ["**/node_modules/**", "**/.pnpm/**"],
+        },
+        {
+          from: "cloudfunctions/appointments/built/",
+          to: "dist/cloudfunctions/appointments/",
+        },
       ],
       options: {},
     },
