@@ -2,6 +2,11 @@
 
 CourtBook is a WeChat Mini Program for court booking and scheduling, designed to help users easily book and manage their court reservations.
 
+## Documentation
+
+- [English Getting Started Guide](docs/en/getting-started.md)
+- [中文开发环境搭建指南](docs/zh/getting-started.md)
+
 ## Features
 
 - User-friendly interface for booking courts
@@ -21,8 +26,11 @@ CourtBook is a WeChat Mini Program for court booking and scheduling, designed to
 
 ### Prerequisites
 
-- Node.js (v14+)
+- Node.js (v20+)
 - pnpm package manager
+- GitHub CLI
+
+See the detailed [getting started guide](docs/en/getting-started.md) for complete setup instructions.
 
 ### Getting Started
 
