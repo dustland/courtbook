@@ -1,86 +1,86 @@
-@import "./styles/variables.scss";
+@use "./styles/variables.scss" as vars;
 
 /* Global CSS styles */
 
 /* Base font size setting for WeChat mini programs */
 page {
-  background-color: $background;
+  background-color: vars.$background;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 40rpx; /* Increased base font size */
 
   /* CSS custom properties for backwards compatibility */
-  --font-size-xs: #{$font-size-xs};
-  --font-size-sm: #{$font-size-sm};
-  --font-size-md: #{$font-size-md};
-  --font-size-lg: #{$font-size-lg};
-  --font-size-xl: #{$font-size-xl};
+  --font-size-xs: #{vars.$font-size-xs};
+  --font-size-sm: #{vars.$font-size-sm};
+  --font-size-md: #{vars.$font-size-md};
+  --font-size-lg: #{vars.$font-size-lg};
+  --font-size-xl: #{vars.$font-size-xl};
   
-  --primary-color: #{$primary};
-  --primary-light: #{$primary-light};
-  --primary-dark: #{$primary-dark};
-  --secondary-color: #{$secondary};
-  --text-color: #{$text-color};
-  --text-color-light: #{$text-color-light};
-  --text-white: #{$text-white};
-  --text-white-soft: #{$text-white-soft};
-  --text-white-muted: #{$text-white-muted};
-  --text-on-light: #{$text-on-light};
-  --background-color: #{$background};
-  --border-color: #{$border};
-  --success-color: #{$success};
-  --warning-color: #{$warning};
-  --error-color: #{$error};
+  --primary-color: #{vars.$primary};
+  --primary-light: #{vars.$primary-light};
+  --primary-dark: #{vars.$primary-dark};
+  --secondary-color: #{vars.$secondary};
+  --text-color: #{vars.$text-color};
+  --text-color-light: #{vars.$text-color-light};
+  --text-white: #{vars.$text-white};
+  --text-white-soft: #{vars.$text-white-soft};
+  --text-white-muted: #{vars.$text-white-muted};
+  --text-on-light: #{vars.$text-on-light};
+  --background-color: #{vars.$background};
+  --border-color: #{vars.$border};
+  --success-color: #{vars.$success};
+  --warning-color: #{vars.$warning};
+  --error-color: #{vars.$error};
   
-  --blue-gradient: #{$blue-gradient};
-  --purple-gradient: #{$purple-gradient};
-  --green-gradient: #{$green-gradient};
+  --blue-gradient: #{vars.$blue-gradient};
+  --purple-gradient: #{vars.$purple-gradient};
+  --green-gradient: #{vars.$green-gradient};
   
-  --shadow-sm: #{$shadow-sm};
-  --shadow-md: #{$shadow-md};
-  --shadow-lg: #{$shadow-lg};
-  --shadow-primary: #{$shadow-primary};
+  --shadow-sm: #{vars.$shadow-sm};
+  --shadow-md: #{vars.$shadow-md};
+  --shadow-lg: #{vars.$shadow-lg};
+  --shadow-primary: #{vars.$shadow-primary};
   
-  --radius-sm: #{$radius-sm};
-  --radius-md: #{$radius-md};
-  --radius-lg: #{$radius-lg};
-  --radius-xl: #{$radius-xl};
-  --radius-full: #{$radius-full};
+  --radius-sm: #{vars.$radius-sm};
+  --radius-md: #{vars.$radius-md};
+  --radius-lg: #{vars.$radius-lg};
+  --radius-xl: #{vars.$radius-xl};
+  --radius-full: #{vars.$radius-full};
   
-  --spacing-xs: #{$spacing-xs};
-  --spacing-sm: #{$spacing-sm};
-  --spacing-md: #{$spacing-md};
-  --spacing-lg: #{$spacing-lg};
-  --spacing-xl: #{$spacing-xl};
+  --spacing-xs: #{vars.$spacing-xs};
+  --spacing-sm: #{vars.$spacing-sm};
+  --spacing-md: #{vars.$spacing-md};
+  --spacing-lg: #{vars.$spacing-lg};
+  --spacing-xl: #{vars.$spacing-xl};
 }
 
 /* Setting default text sizes for common elements */
 text, view, button, input, .weui-input {
-  font-size: $font-size-md;
-  color: $text-color;
+  font-size: vars.$font-size-md;
+  color: vars.$text-color;
 }
 
 /* Fix common elements that might appear too small */
 .title, h1, h2, h3, .header .title {
-  font-size: $font-size-lg;
+  font-size: vars.$font-size-lg;
   font-weight: bold;
-  color: $text-color;
+  color: vars.$text-color;
 }
 
 .small-text, .timestamp {
-  font-size: $font-size-sm;
-  color: $text-color-light;
+  font-size: vars.$font-size-sm;
+  color: vars.$text-color-light;
 }
 
 button, .button {
-  font-size: $font-size-md;
+  font-size: vars.$font-size-md;
   min-height: 90rpx;
   line-height: 1.5;
 }
 
 input, .input {
   height: 90rpx;
-  font-size: $font-size-md;
-  color: $text-color;
+  font-size: vars.$font-size-md;
+  color: vars.$text-color;
 }
 
 /* Common utility classes for layouts */

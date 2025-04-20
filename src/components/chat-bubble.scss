@@ -1,4 +1,4 @@
-@import "../styles/variables.scss";
+@use "../styles/variables.scss" as vars;
 
 .chat-bubble {
   margin: 10px 15px;
@@ -9,7 +9,7 @@
   
   &.user {
     align-self: flex-end;
-    background-color: $primary;
+    background-color: vars.$primary;
     color: white;
     margin-left: auto;
     
@@ -30,13 +30,13 @@
   }
   
   .message-content {
-    font-size: $font-size-sm;
+    font-size: vars.$font-size-sm;
     line-height: 1.5;
     margin-bottom: 8px;
   }
   
   .timestamp {
-    font-size: $font-size-sm;
+    font-size: vars.$font-size-sm;
     position: absolute;
     bottom: 4px;
     right: 12px;

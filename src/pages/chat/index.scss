@@ -1,10 +1,10 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss" as vars;
 
 .chat-page {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: $background;
+  background-color: vars.$background;
 
   .messages-container {
     flex: 1;
@@ -17,8 +17,8 @@
   .chat-container {
     display: flex;
     flex-direction: column;
-    background-color: $text-white;
-    padding: $spacing-md;
+    background-color: vars.$text-white;
+    padding: vars.$spacing-md;
     border-top: 1px solid #eee;
 
     .chat-input-container {
@@ -28,27 +28,27 @@
       width: 100%;
 
       .chat-input {
-        border: 1px solid $primary;
+        border: 1px solid vars.$primary;
         border-radius: 20rpx;
-        padding: $spacing-sm $spacing-lg;
+        padding: vars.$spacing-sm vars.$spacing-lg;
         height: 80rpx;
         width: 100%;
-        color: $text-color;
+        color: vars.$text-color;
       }
 
       .send-button {
         position: absolute;
-        right: $spacing-sm;
+        right: vars.$spacing-sm;
         width: 70rpx;
         height: 70rpx;
         border-radius: 35rpx;
-        background-color: $primary;
+        background-color: vars.$primary;
         display: flex;
         justify-content: center;
         align-items: center;
 
         .send-icon {
-          color: $text-white;
+          color: vars.$text-white;
         }
       }
     }

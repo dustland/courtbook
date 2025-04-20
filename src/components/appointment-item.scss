@@ -1,11 +1,11 @@
-@import "../styles/variables.scss";
+@use "../styles/variables.scss" as vars;
 
 .appointment-item {
-  background-color: $text-white;
+  background-color: vars.$text-white;
   border-radius: 12px;
   padding: 15px;
   margin: 0 15px 15px;
-  box-shadow: $shadow-sm;
+  box-shadow: vars.$shadow-sm;
   display: flex;
   flex-direction: column;
   
@@ -21,15 +21,15 @@
   
   .appointment-status {
     .past-indicator {
-      background-color: $text-color-light;
-      color: $text-white;
+      background-color: vars.$text-color-light;
+      color: vars.$text-white;
       padding: 2px 8px;
       border-radius: 10px;
     }
     
     .upcoming-indicator {
-      background-color: $primary;
-      color: $text-white;
+      background-color: vars.$primary;
+      color: vars.$text-white;
       padding: 2px 8px;
       border-radius: 10px;
     }
@@ -41,7 +41,7 @@
     
     .appointment-court {
       font-weight: bold;
-      color: $text-color;
+      color: vars.$text-color;
       margin-bottom: 8px;
       display: block;
     }
@@ -52,13 +52,13 @@
     }
     
     .appointment-date {
-      color: $text-color-light;
+      color: vars.$text-color-light;
       margin-bottom: 4px;
       display: block;
     }
     
     .appointment-time {
-      color: $text-color-light;
+      color: vars.$text-color-light;
       margin-bottom: 12px;
       display: block;
     }
@@ -66,8 +66,8 @@
   
   .cancel-button {
     align-self: flex-end;
-    background-color: $error;
-    color: $text-white;
+    background-color: vars.$error;
+    color: vars.$text-white;
     line-height: 1;
     border-radius: 6px;
     margin: 0;
@@ -90,13 +90,13 @@
     }
     
     .confirm-yes {
-      background-color: $error;
-      color: $text-white;
+      background-color: vars.$error;
+      color: vars.$text-white;
     }
     
     .confirm-no {
-      background-color: $secondary;
-      color: $text-color-light;
+      background-color: vars.$secondary;
+      color: vars.$text-color-light;
     }
   }
 } 

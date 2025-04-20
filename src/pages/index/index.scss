@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss" as vars;
 
 .index-page {
   display: flex;
@@ -11,9 +11,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: $spacing-lg;
-  background-color: $primary-light;
-  color: $text-white;
+  padding: vars.$spacing-lg;
+  background-color: vars.$primary-light;
+  color: vars.$text-white;
   border: none;
 
   .greeting-content {
@@ -21,9 +21,9 @@
     flex-direction: column;
 
     .greeting-text {
-      font-size: $font-size-xl;
+      font-size: vars.$font-size-xl;
       font-weight: bold;
-      margin-bottom: $spacing-sm;
+      margin-bottom: vars.$spacing-sm;
     }
 
     .quick-stats {
@@ -36,15 +36,15 @@
         align-items: center;
 
         .stat-value {
-          font-size: $font-size-lg;
+          font-size: vars.$font-size-lg;
           font-weight: bold;
-          color: $text-white;
-          margin-bottom: $spacing-xs;
+          color: vars.$text-white;
+          margin-bottom: vars.$spacing-xs;
         }
 
         .stat-label {
-          font-size: $font-size-xs;
-          color: $text-white-soft;
+          font-size: vars.$font-size-xs;
+          color: vars.$text-white-soft;
         }
       }
 
@@ -52,7 +52,7 @@
         width: 2rpx;
         height: 40rpx;
         background-color: rgba(255, 255, 255, 0.3);
-        margin: 0 $spacing-lg;
+        margin: 0 vars.$spacing-lg;
       }
     }
   }
@@ -60,9 +60,9 @@
   .avatar {
     width: 80rpx;
     height: 80rpx;
-    border-radius: $radius-full;
+    border-radius: vars.$radius-full;
     border: 4rpx solid rgba(255, 255, 255, 0.8);
-    box-shadow: $shadow-sm;
+    box-shadow: vars.$shadow-sm;
   }
 }
 
@@ -72,18 +72,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: $spacing-sm;
+  padding: vars.$spacing-sm;
 }
 
 .appointments-section {
   grid-column: span 3;
-  margin: 0 0 $spacing-lg;
+  margin: 0 0 vars.$spacing-lg;
 }
 
 // Section containers
 .appointments-container {
   background: linear-gradient(160deg, #5683fe, #6c63ff);
-  color: $text-white;
+  color: vars.$text-white;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -101,14 +101,14 @@
   z-index: 1;
 
   .section-icon {
-    color: $text-white;
-    margin-right: $spacing-md;
+    color: vars.$text-white;
+    margin-right: vars.$spacing-md;
   }
 
   .section-title {
-    font-size: $font-size-md;
+    font-size: vars.$font-size-md;
     font-weight: bold;
-    color: $text-white;
+    color: vars.$text-white;
   }
 }
 
@@ -121,20 +121,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: $spacing-sm 0;
+  padding: vars.$spacing-sm 0;
   min-height: 200rpx;
 }
 
 .appointment-card {
   display: flex;
   align-items: center;
-  padding: $spacing-lg;
+  padding: vars.$spacing-lg;
   background-color: rgba(255, 255, 255, 0.15);
-  color: $text-white;
+  color: vars.$text-white;
   backdrop-filter: blur(10px);
-  border-radius: $radius-xl;
-  margin-bottom: $spacing-lg;
-  box-shadow: $shadow-md;
+  border-radius: vars.$radius-xl;
+  margin-bottom: vars.$spacing-lg;
+  box-shadow: vars.$shadow-md;
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 100%;
 
@@ -142,15 +142,15 @@
     width: 120rpx;
     min-width: 120rpx;
     height: 120rpx;
-    border-radius: $radius-md;
+    border-radius: vars.$radius-md;
     background-color: rgba(255, 255, 255, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: $spacing-lg;
+    margin-right: vars.$spacing-lg;
 
     .date-label {
-      font-size: $font-size-md;
+      font-size: vars.$font-size-md;
       font-weight: bold;
       text-align: center;
     }
@@ -160,16 +160,16 @@
     flex: 1;
 
     .court-name {
-      font-size: $font-size-md;
+      font-size: vars.$font-size-md;
       font-weight: bold;
-      color: $text-white;
-      margin-bottom: $spacing-sm;
+      color: vars.$text-white;
+      margin-bottom: vars.$spacing-sm;
       display: block;
     }
 
     .time-slot {
-      font-size: $font-size-sm;
-      color: $text-white-soft;
+      font-size: vars.$font-size-sm;
+      color: vars.$text-white-soft;
     }
   }
 }
@@ -180,27 +180,27 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: $spacing-xl $spacing-xl;
+  padding: vars.$spacing-xl vars.$spacing-xl;
   position: relative;
   z-index: 1;
   flex: 1;
 
   .empty-icon {
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: $spacing-lg;
+    margin-bottom: vars.$spacing-lg;
   }
 
   .empty-text {
-    font-size: $font-size-md;
-    color: $text-white-soft;
+    font-size: vars.$font-size-md;
+    color: vars.$text-white-soft;
   }
 }
 
 .remaining-appointments {
   padding: 20rpx;
   text-align: center;
-  font-size: $font-size-md;
-  color: $text-white;
+  font-size: vars.$font-size-md;
+  color: vars.$text-white;
   margin-bottom: 30rpx;
 }
 
@@ -220,8 +220,8 @@
   margin-top: 20rpx;
 
   .btn-text {
-    font-size: $font-size-md;
-    color: $text-white;
+    font-size: vars.$font-size-md;
+    color: vars.$text-white;
   }
 }
 
@@ -229,8 +229,8 @@
 .chat-container {
   display: flex;
   flex-direction: column;
-  background-color: $text-white;
-  padding: $spacing-md;
+  background-color: vars.$text-white;
+  padding: vars.$spacing-md;
   border-top: 1px solid #eee;
 
   .chat-input-container {
@@ -240,35 +240,35 @@
     width: 100%;
 
     .chat-input {
-      border: 1px solid $primary;
+      border: 1px solid vars.$primary;
       border-radius: 20rpx;
-      padding: $spacing-sm $spacing-lg;
+      padding: vars.$spacing-sm vars.$spacing-lg;
       height: 80rpx;
       width: 100%;
-      color: $text-color;
+      color: vars.$text-color;
     }
 
     .send-button {
       position: absolute;
-      right: $spacing-sm;
+      right: vars.$spacing-sm;
       width: 70rpx;
       height: 70rpx;
       border-radius: 35rpx;
-      background-color: $primary;
+      background-color: vars.$primary;
       display: flex;
       justify-content: center;
       align-items: center;
 
       .send-icon {
-        color: $text-white;
+        color: vars.$text-white;
       }
     }
   }
 }
 
 .no-appointments {
-  color: $text-white;
-  font-size: $font-size-md;
+  color: vars.$text-white;
+  font-size: vars.$font-size-md;
   text-align: center;
-  padding: $spacing-lg;
+  padding: vars.$spacing-lg;
 }
