@@ -33,6 +33,8 @@ VS Code is our recommended code editor, which provides powerful TypeScript and R
    - Taroify Extension (if using the Taroify component library)
    - Chinese Language Pack (if you need a Chinese interface)
 
+Alternatively, we recommend using AI-powered code editors such as [Cursor](https://cursor.com/) or [Windsurf](https://windsurf.com/editor/) which provide advanced code completion and assistance features specifically helpful for this project.
+
 ## II. Project Setup
 
 ### 1. Clone the Project

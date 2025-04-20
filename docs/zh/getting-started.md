@@ -33,6 +33,8 @@ VS Code 是我们推荐的代码编辑器，它提供了强大的 TypeScript 和
    - Taroify Extension (如果使用了 Taroify 组件库)
    - Chinese Language Pack (如需中文界面)
 
+另外，我们也强烈推荐使用人工智能驱动的代码编辑器，如 [Cursor](https://cursor.com/) 或 [Windsurf](https://windsurf.com/editor)，它们提供先进的代码补全和辅助功能，对本项目的开发特别有帮助。
+
 ## 二、项目设置
 
 ### 1. 克隆项目
