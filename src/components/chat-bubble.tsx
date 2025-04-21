@@ -1,7 +1,7 @@
 import { View, Text } from "@tarojs/components";
-import ReactMarkdown from "react-markdown";
 import { TimeSlot } from "../types";
 import Icon from "./icon";
+import MarkdownRenderer from "./markdown-renderer";
 import "./chat-bubble.scss";
 
 // Extended TimeSlot with date property if needed
@@ -25,35 +25,6 @@ interface ChatBubbleProps {
   onFeedback?: (messageId: string, isPositive: boolean) => void;
 }
 
-// Custom renderer components for React Markdown
-const MarkdownComponents = {
-  // Override paragraph to use Text component
-  p: ({ children }) => <Text className="markdown-paragraph">{children}</Text>,
-  // Override text elements to use Text component
-  text: ({ children }) => <Text>{children}</Text>,
-  // Override strong/bold elements
-  strong: ({ children }) => <Text className="markdown-bold">{children}</Text>,
-  // Override emphasis/italic elements
-  em: ({ children }) => <Text className="markdown-italic">{children}</Text>,
-  // Override list items
-  li: ({ children }) => (
-    <View className="markdown-list-item">
-      <Text>• {children}</Text>
-    </View>
-  ),
-  // Override links
-  a: ({ href, children }) => (
-    <Text
-      className="markdown-link"
-      onClick={() => {
-        /* Handle link click */
-      }}
-    >
-      {children}
-    </Text>
-  ),
-};
-
 const ChatBubble: React.FC<ChatBubbleProps> = ({
   message,
   onSlotSelect,
@@ -67,9 +38,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
         {isUser ? (
           <Text>{message.text}</Text>
         ) : (
-          <ReactMarkdown components={MarkdownComponents}>
-            {message.text}
-          </ReactMarkdown>
+          <MarkdownRenderer markdown={message.text || "请稍候..."} />
         )}
       </View>
 

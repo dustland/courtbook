@@ -42,18 +42,22 @@ $border-dark: #64748b;
 
 // Font Sizes
 $font-size-xs: 12px;
-$font-size-sm: 18px;
-$font-size-md: 24px;
-$font-size-lg: 28px;
+$font-size-sm: 16px;
+$font-size-md: 20px;
+$font-size-lg: 24px;
 $font-size-xl: 32px;
 $font-size-xxl: 40px;
 
 // Gradients
-$gradient-primary: linear-gradient(to right bottom, $primary, $primary-focus);
-$gradient-secondary: linear-gradient(
+$gradient-primary: linear-gradient(
   to right bottom,
+  $primary,
+  color.adjust($primary, $lightness: 10%)
+);
+$gradient-secondary: linear-gradient(
+  to right,
   $secondary,
-  $secondary-focus
+  color.adjust($secondary, $lightness: 10%)
 );
 $gradient-blend: linear-gradient(to right bottom, $primary, $secondary);
 

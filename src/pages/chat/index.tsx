@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { View, Input, ScrollView } from "@tarojs/components";
+import { View, ScrollView } from "@tarojs/components";
 import Taro, { useLoad } from "@tarojs/taro";
-import Icon from "../../components/icon";
 import ChatBubble from "../../components/chat-bubble";
+import ChatInput from "../../components/chat-input";
+import TypingIndicator from "../../components/typing-indicator";
 import { TimeSlot } from "../../types";
 import "./index.scss";
 
@@ -25,16 +26,23 @@ interface ExtendedTimeSlot extends TimeSlot {
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [inputText, setInputText] = useState("");
   const [ai, setAi] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [botId] = useState<string>("bot-ce5cf943"); // Use the actual bot ID from user
   const [conversation, setConversation] = useState<string>("");
   const scrollViewRef = useRef<any>(null);
 
+  // Sample quick questions
+  const quickQuestions = [
+    { question: "帮我预定明天晚上 7 点的场地" },
+    { question: "最近可以订到的 1 小时的场地是什么时候？" },
+    { question: "我想取消我的预订" },
+  ];
+
   // Initialize AI when component mounts
   useEffect(() => {
     initAI();
+    getChatHistory();
   }, []);
 
   useLoad(() => {
@@ -107,8 +115,9 @@ export default function Chat() {
     });
   };
 
-  const handleSend = async () => {
-    if (!inputText.trim() || !ai || !botId) return;
+  const handleSend = async (text: string) => {
+    console.log("inputText", text);
+    if (!ai || !botId) return;
 
     // Generate unique conversation ID if needed
     if (!conversation) {
@@ -119,12 +128,11 @@ export default function Chat() {
     const userMessage: Message = {
       id: `user-${Date.now()}`,
       sender: "user",
-      text: inputText,
+      text: text,
       timestamp: new Date().toLocaleString("zh-CN"),
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    setInputText("");
     setIsLoading(true);
 
     try {
@@ -248,11 +256,10 @@ export default function Chat() {
     const slotMessage = `我想预订${slot.date || "今天"}${slot.startTime}-${
       slot.endTime
     }的场地。`;
-    setInputText(slotMessage);
 
     // Automatically send the message after a short delay
     setTimeout(() => {
-      handleSend();
+      handleSend(slotMessage);
     }, 100);
   };
 
@@ -309,33 +316,18 @@ export default function Chat() {
             />
           </View>
         ))}
-        {isLoading && (
-          <View className="typing-indicator">
-            <View className="dot"></View>
-            <View className="dot"></View>
-            <View className="dot"></View>
-          </View>
-        )}
+        {isLoading && <TypingIndicator />}
       </ScrollView>
 
-      <View className="chat-container">
-        <View className="chat-input-container">
-          <Input
-            className="chat-input"
-            value={inputText}
-            onInput={(e) => setInputText(e.detail.value)}
-            placeholder="输入您的问题..."
-            confirmType="send"
-            onConfirm={handleSend}
-            disabled={isLoading}
-          />
-          <View
-            className={`send-button ${isLoading ? "disabled" : ""}`}
-            onClick={handleSend}
-          >
-            <Icon value="send" size={20} className="send-icon" />
-          </View>
-        </View>
+      <View className="input-container">
+        <ChatInput
+          onSend={handleSend}
+          placeholder="输入您的问题..."
+          disabled={isLoading}
+          loading={isLoading}
+          quickQuestions={quickQuestions}
+          showQuickQuestions={messages.length <= 2} // Only show quick questions at the start of the conversation
+        />
       </View>
     </View>
   );

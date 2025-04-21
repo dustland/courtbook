@@ -4,6 +4,7 @@ import {
   HomeOutlined,
   ChatOutlined,
   CalendarOutlined,
+  Ellipsis,
   UserOutlined,
   SettingOutlined,
   InfoOutlined,
@@ -54,6 +55,7 @@ const iconComponents: Record<string, React.FC<any>> = {
   "chevron-right": ArrowRight,
   help: QuestionOutlined,
   info: InfoOutlined,
+  loading: Ellipsis,
   "thumb-up": (props) => <SvgIcon path={THUMB_UP_PATH} {...props} />,
   "thumb-down": (props) => <SvgIcon path={THUMB_DOWN_PATH} {...props} />,
 };

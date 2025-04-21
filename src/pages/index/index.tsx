@@ -1,11 +1,11 @@
-import { View, Text, Image, Input } from "@tarojs/components";
+import { View, Text, Image } from "@tarojs/components";
 import { useLoad } from "@tarojs/taro";
 import Taro from "@tarojs/taro";
 import { useState, useEffect } from "react";
 import Icon from "../../components/icon";
+import ChatInput from "../../components/chat-input";
 import { mockAppointments, mockUser } from "../../mock/data";
 import "./index.scss";
-import QuickQuestion from "@/components/quick-question";
 
 export default function Index() {
   const [chatInput, setChatInput] = useState("");
@@ -13,16 +13,15 @@ export default function Index() {
     mockAppointments.filter((appointment) => !appointment.isPast).slice(0, 3)
   );
 
+  // Quick questions for the home page
+  const quickQuestions = [
+    { question: "帮我预定明天晚上 7 点的场地" },
+    { question: "最近可以订到的 1 小时的场地是什么时候？" },
+  ];
+
   useLoad(() => {
     console.log("Page loaded.");
   });
-
-  // useEffect(() => {
-  //   Taro.setNavigationBarColor({
-  //     frontColor: "#ffffff",
-  //     backgroundColor: "#6a48fa",
-  //   });
-  // }, []);
 
   const navigateToAppointments = () => {
     Taro.switchTab({
@@ -43,25 +42,9 @@ export default function Index() {
     });
   };
 
-  const handleSendMessage = () => {
-    if (!chatInput.trim()) return;
-    navigateToChat(chatInput);
-    setChatInput("");
-  };
-
-  const formatAppointmentDate = (date: string) => {
-    // Convert YYYY-MM-DD to more readable format
-    const dateObj = new Date(date);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-
-    if (dateObj.getTime() === today.getTime()) return "今天";
-    if (dateObj.getTime() === tomorrow.getTime()) return "明天";
-
-    return `${dateObj.getMonth() + 1}月${dateObj.getDate()}日`;
+  const handleSendMessage = (text: string) => {
+    if (!text.trim()) return;
+    navigateToChat(text);
   };
 
   return (
@@ -130,35 +113,21 @@ export default function Index() {
                 <Text className="no-appointments">没有即将到来的预约</Text>
               )}
             </View>
-
-            <View
-              className="make-appointment-btn"
-              onClick={navigateToAppointments}
-            >
-              <Text className="btn-text">预约场地</Text>
-            </View>
           </View>
         </View>
       </View>
       {/* Quick Chat Section */}
       <View className="chat-container">
-        <View className="quick-question">
-          <QuickQuestion question="帮我预定明天晚上 7 点的场地" />
-          <QuickQuestion question="最近可以订到的 1 小时的场地是什么时候？" />
+        <View className="make-appointment-btn" onClick={navigateToAppointments}>
+          <Text className="btn-text">预约场地</Text>
         </View>
-        <View className="chat-input-container">
-          <Input
-            className="chat-input"
-            value={chatInput}
-            onInput={(e) => setChatInput(e.detail.value)}
-            placeholder="询问预约信息或直接预约..."
-            confirmType="send"
-            onConfirm={handleSendMessage}
-          />
-          <View className="send-button" onClick={handleSendMessage}>
-            <Icon value="send" size={20} className="send-icon" />
-          </View>
-        </View>
+
+        <ChatInput
+          onSend={handleSendMessage}
+          placeholder="询问预约信息或直接预约..."
+          quickQuestions={quickQuestions}
+          showQuickQuestions={true}
+        />
       </View>
     </View>
   );

@@ -1,0 +1,93 @@
+@use "../styles/variables.scss" as vars;
+
+.markdown-content {
+  font-size: vars.$font-size-sm;
+  line-height: 1.5;
+  word-break: break-word;
+
+  :global {
+    rich-text {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  a {
+    color: vars.$primary;
+    text-decoration: underline;
+  }
+
+  ul,
+  ol {
+    padding-left: vars.$spacing-lg;
+    margin: vars.$spacing-sm 0;
+  }
+
+  p {
+    margin-bottom: vars.$spacing-md;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: vars.$spacing-lg;
+    margin-bottom: vars.$spacing-sm;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: vars.$font-size-xl;
+  }
+
+  h2 {
+    font-size: vars.$font-size-lg;
+  }
+
+  h3 {
+    font-size: vars.$font-size-md;
+  }
+
+  code {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+
+  pre {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: vars.$spacing-md;
+    border-radius: vars.$radius-md;
+    overflow-x: auto;
+    margin: vars.$spacing-md 0;
+
+    code {
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+
+  blockquote {
+    border-left: 4px solid vars.$primary;
+    padding-left: vars.$spacing-md;
+    margin: vars.$spacing-md 0;
+    color: vars.$neutral;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: vars.$spacing-md 0;
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background-color: vars.$border-light;
+    margin: vars.$spacing-lg 0;
+  }
+}

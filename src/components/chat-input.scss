@@ -1,0 +1,94 @@
+@use "../styles/variables.scss" as vars;
+
+.chat-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  .quick-questions {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-sm;
+    margin-bottom: vars.$spacing-md;
+    padding: 0 vars.$spacing-sm;
+    box-sizing: border-box;
+    width: 100%;
+
+    .quick-question {
+      width: 100%;
+      box-sizing: border-box;
+
+      .question-text {
+        color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        text-align: center;
+        font-size: vars.$font-size-sm;
+        background-color: vars.$base-200;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: vars.$radius-lg;
+        padding: vars.$spacing-md;
+        display: block;
+        transition: vars.$transition-fast;
+        box-sizing: border-box;
+
+        &:hover,
+        &:active {
+          background-color: vars.$base-300;
+        }
+      }
+    }
+  }
+
+  .chat-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    background-color: vars.$base-100;
+    padding: vars.$spacing-md;
+    border-top: 1px solid vars.$border-light;
+    box-sizing: border-box;
+
+    .chat-input {
+      border: 1px solid vars.$primary;
+      border-radius: vars.$radius-xl;
+      padding: 0 vars.$spacing-lg;
+      padding-right: 70px; /* Make room for the send button */
+      height: 80px;
+      width: 100%;
+      color: vars.$base-content;
+      background-color: vars.$base-200;
+      box-sizing: border-box;
+
+      &:focus {
+        border-color: vars.$primary;
+        background-color: vars.$base-100;
+      }
+    }
+
+    .send-button {
+      position: absolute;
+      right: vars.$spacing-lg;
+      width: 60px;
+      height: 60px;
+      border-radius: vars.$radius-full;
+      background-color: vars.$primary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: vars.$transition-fast;
+      z-index: 1;
+
+      .send-icon {
+        color: vars.$primary-content;
+      }
+
+      &.disabled {
+        background-color: vars.$primary-subtle;
+        opacity: 0.7;
+      }
+    }
+  }
+}

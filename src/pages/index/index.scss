@@ -89,7 +89,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 0;
-  min-height: 280px;
+  min-height: 240px;
   flex: 1;
   border-radius: vars.$radius-xl;
   border: 1px solid vars.$primary-subtle;
@@ -214,15 +214,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: vars.$secondary;
+  background-color: vars.$primary;
   height: 90px;
-  border-radius: 45px;
+  border-radius: vars.$radius-xl;
   font-weight: bold;
-  position: relative;
-  z-index: 1;
   width: 100%;
   align-self: center;
-  margin-top: 20px;
 
   .btn-text {
     font-size: vars.$font-size-md;
@@ -235,39 +232,33 @@
   display: flex;
   flex-direction: column;
   background-color: vars.$base-100;
+  gap: vars.$spacing-md;
   padding: vars.$spacing-md;
+  width: 100%;
+  box-sizing: border-box;
 
-  .chat-input-container {
+  // Quick question styles have been moved to the chat-input component
+
+  // Make appointment button
+  .make-appointment-btn {
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: center;
+    background-color: vars.$primary;
+    height: 90px;
+    border-radius: vars.$radius-xl;
+    font-weight: bold;
     width: 100%;
+    align-self: center;
+    box-sizing: border-box;
 
-    .chat-input {
-      border: 1px solid vars.$primary;
-      border-radius: 20px;
-      padding: vars.$spacing-sm vars.$spacing-lg;
-      height: 80px;
-      width: 100%;
-      color: vars.$base-content;
-    }
-
-    .send-button {
-      position: absolute;
-      right: vars.$spacing-sm;
-      width: 70px;
-      height: 70px;
-      border-radius: 35px;
-      background-color: vars.$primary;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .send-icon {
-        color: vars.$primary-content;
-      }
+    .btn-text {
+      font-size: vars.$font-size-md;
+      color: #ffffff;
     }
   }
+
+  // The chat input container styles are now in the ChatInput component
 }
 
 .no-appointments {
