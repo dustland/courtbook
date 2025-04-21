@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { View, ScrollView } from "@tarojs/components";
-import Taro, { useLoad } from "@tarojs/taro";
+import Taro, { useDidShow } from "@tarojs/taro";
 import ChatBubble from "../../components/chat-bubble";
 import ChatInput from "../../components/chat-input";
 import TypingIndicator from "../../components/typing-indicator";
 import { TimeSlot } from "../../types";
+import { getAndClearInitialChatMessage } from "../../utils/navigation";
 import "./index.scss";
 
 // Declare wx global for TypeScript
@@ -31,6 +32,7 @@ export default function Chat() {
   const [botId] = useState<string>("bot-ce5cf943"); // Use the actual bot ID from user
   const [conversation, setConversation] = useState<string>("");
   const scrollViewRef = useRef<any>(null);
+  const [initialMessageProcessed, setInitialMessageProcessed] = useState(false);
 
   // Sample quick questions
   const quickQuestions = [
@@ -45,8 +47,19 @@ export default function Chat() {
     getChatHistory();
   }, []);
 
-  useLoad(() => {
-    console.log("Chat page loaded");
+  // Handle initial message check after first render and on each didShow
+  useEffect(() => {
+    // This ensures we check for the initial message only once during initial mount
+    if (!initialMessageProcessed) {
+      checkAndProcessInitialMessage();
+      setInitialMessageProcessed(true);
+    }
+  }, [ai]); // Only run when AI changes (becomes available)
+
+  // Re-check for initial message whenever the page is shown
+  useDidShow(() => {
+    console.log("Chat page loaded/shown");
+    checkAndProcessInitialMessage();
   });
 
   // Initialize the AI SDK according to docs
@@ -291,6 +304,22 @@ export default function Chat() {
       showToast(isPositive ? "感谢您的反馈！" : "我们会努力改进");
     } catch (error) {
       console.error("Error sending feedback:", error);
+    }
+  };
+
+  // Check for and process any initial message
+  const checkAndProcessInitialMessage = () => {
+    // Only proceed if AI is initialized
+    if (!ai) {
+      console.log("AI not ready yet, skipping initial message check");
+      return;
+    }
+
+    const initialMessage = getAndClearInitialChatMessage();
+
+    if (initialMessage) {
+      console.log("Processing initial message with initialized AI");
+      handleSend(initialMessage);
     }
   };
 

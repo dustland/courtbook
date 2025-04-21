@@ -1,15 +1,16 @@
 import { View, Text, Image } from "@tarojs/components";
 import { useLoad } from "@tarojs/taro";
 import Taro from "@tarojs/taro";
-import { useState, useEffect } from "react";
 import Icon from "../../components/icon";
 import ChatInput from "../../components/chat-input";
 import { mockAppointments, mockUser } from "../../mock/data";
+import { navigateToChatWithMessage } from "../../utils/navigation";
 import "./index.scss";
+import { useState } from "react";
+import { Appointment } from "@/types";
 
 export default function Index() {
-  const [chatInput, setChatInput] = useState("");
-  const [upcomingAppointments, setUpcomingAppointments] = useState(
+  const [upcomingAppointments] = useState<Appointment[]>(
     mockAppointments.filter((appointment) => !appointment.isPast).slice(0, 3)
   );
 
@@ -30,16 +31,14 @@ export default function Index() {
   };
 
   const navigateToChat = (withMessage?: string) => {
-    Taro.switchTab({
-      url: "/pages/chat/index",
-      success: () => {
-        if (withMessage) {
-          // In a real app, you'd need to use a state management system
-          // to pass the message to the chat page
-          console.log("Sending message:", withMessage);
-        }
-      },
-    });
+    if (withMessage && withMessage.trim()) {
+      // Use the new utility function that uses storage instead of URL params
+      navigateToChatWithMessage(withMessage.trim());
+    } else {
+      Taro.switchTab({
+        url: "/pages/chat/index",
+      });
+    }
   };
 
   const handleSendMessage = (text: string) => {
