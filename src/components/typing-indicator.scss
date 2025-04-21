@@ -7,13 +7,14 @@
   padding: 8px 0;
   box-sizing: border-box;
   width: fit-content;
+  margin-left: 54px;
 
   .dot {
     display: inline-block;
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: vars.$primary;
     margin: 0 2px;
     animation: typing 1.4s infinite ease-in-out both;
 

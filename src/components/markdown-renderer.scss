@@ -3,6 +3,7 @@
 .markdown-content {
   line-height: 1.5;
   word-break: break-word;
+  font-size: vars.$font-size-sm;
 
   :global {
     rich-text {
@@ -18,8 +19,26 @@
 
   ul,
   ol {
-    padding-left: vars.$spacing-lg;
+    padding-left: vars.$spacing-sm;
     margin: vars.$spacing-sm 0;
+  }
+
+  li {
+    margin-bottom: vars.$spacing-xs;
+  }
+
+  ul li {
+    list-style-type: disc;
+    list-style-position: outside;
+    margin-left: vars.$spacing-sm;
+    padding-left: 0;
+  }
+
+  ol li {
+    list-style-type: decimal;
+    list-style-position: outside;
+    margin-left: vars.$spacing-sm;
+    padding-left: 0;
   }
 
   p {

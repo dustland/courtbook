@@ -34,13 +34,11 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
 
   return (
     <View className={`chat-bubble ${isUser ? "user" : "assistant"}`}>
-      <View className="message-content">
-        {isUser ? (
-          <Text>{message.text}</Text>
-        ) : (
-          <MarkdownRenderer markdown={message.text || "请稍候..."} />
-        )}
-      </View>
+      {isUser ? (
+        <Text className="message-content">{message.text}</Text>
+      ) : (
+        <MarkdownRenderer markdown={message.text || "请稍候..."} />
+      )}
 
       {message.availableSlots && message.availableSlots.length > 0 && (
         <View className="available-slots">

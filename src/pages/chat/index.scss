@@ -23,6 +23,19 @@
     box-sizing: border-box;
   }
 
+  .message-container {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 3px solid var(--primary-color);
+  }
+
   .input-container {
     padding: 10px 15px 20px;
     border-top: 1px solid vars.$border-light;

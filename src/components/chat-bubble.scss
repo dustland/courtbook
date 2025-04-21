@@ -48,13 +48,9 @@
     align-self: flex-end;
     margin-left: auto;
     background-color: vars.$primary;
-    color: vars.$primary-content;
-    border-bottom-right-radius: vars.$radius-lg;
-
+    border-top-right-radius: 4px;
     .message-content {
-      .markdown-link {
-        color: vars.$primary-content;
-      }
+      color: vars.$primary-content;
     }
   }
 
@@ -63,7 +59,12 @@
     margin-right: auto;
     background-color: vars.$base-100;
     color: vars.$base-content;
-    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    .message-content {
+      .markdown-link {
+        color: vars.$primary-content;
+      }
+    }
   }
 
   .available-slots {

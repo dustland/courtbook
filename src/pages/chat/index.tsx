@@ -7,7 +7,8 @@ import TypingIndicator from "../../components/typing-indicator";
 import { TimeSlot } from "../../types";
 import { getAndClearInitialChatMessage } from "../../utils/navigation";
 import "./index.scss";
-
+import { mockUser } from "@/mock/data";
+import { Image } from "@tarojs/components";
 // Declare wx global for TypeScript
 declare const wx: any;
 
@@ -337,12 +338,22 @@ export default function Chat() {
         ref={scrollViewRef}
       >
         {messages.map((message) => (
-          <View id={`message-${message.id}`} key={message.id}>
+          <View
+            id={`message-${message.id}`}
+            key={message.id}
+            className="message-container"
+          >
+            {message.sender === "assistant" && (
+              <Image src={"/assets/icons/chat-active.png"} className="avatar" />
+            )}
             <ChatBubble
               message={message}
               onSlotSelect={handleSlotSelect}
               onFeedback={handleFeedback}
             />
+            {message.sender === "user" && (
+              <Image src={mockUser.avatar} className="avatar" />
+            )}
           </View>
         ))}
         {isLoading && <TypingIndicator />}
