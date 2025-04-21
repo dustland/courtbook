@@ -14,8 +14,8 @@ export default defineAppConfig({
     enablePullDownRefresh: true,
   },
   tabBar: {
-    color: "#999",
-    selectedColor: "#3E2AD1",
+    color: "#515151",
+    selectedColor: "#67b42e",
     backgroundColor: "#fff",
     borderStyle: "white",
     list: [
@@ -27,15 +27,15 @@ export default defineAppConfig({
       },
       {
         pagePath: "pages/chat/index",
-        text: "对话",
+        text: "助理",
         iconPath: "assets/icons/chat.png",
         selectedIconPath: "assets/icons/chat-active.png",
       },
       {
         pagePath: "pages/appointments/index",
         text: "预约",
-        iconPath: "assets/icons/appointments.png",
-        selectedIconPath: "assets/icons/appointments-active.png",
+        iconPath: "assets/icons/calendar.png",
+        selectedIconPath: "assets/icons/calendar-active.png",
       },
       {
         pagePath: "pages/profile/index",

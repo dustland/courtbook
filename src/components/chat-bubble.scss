@@ -10,7 +10,7 @@
 
   .timestamp {
     font-size: vars.$font-size-xs;
-    color: vars.$text-color-light;
+    color: vars.$neutral;
     display: block;
     margin-top: 5px;
   }
@@ -49,12 +49,12 @@
     align-self: flex-end;
     margin-left: auto;
     background-color: vars.$primary;
-    color: vars.$text-white;
+    color: vars.$primary-content;
     border-bottom-right-radius: 4px;
 
     .message-content {
       .markdown-link {
-        color: #ffffff;
+        color: vars.$primary-content;
       }
     }
   }
@@ -62,8 +62,8 @@
   &.assistant {
     align-self: flex-start;
     margin-right: auto;
-    background-color: vars.$text-white;
-    color: vars.$primary;
+    background-color: vars.$base-100;
+    color: vars.$base-content;
     border-bottom-left-radius: 4px;
   }
 
@@ -99,8 +99,8 @@
 
       .slot-action {
         font-size: 12px;
-        background-color: #1677ff;
-        color: white;
+        background-color: vars.$info;
+        color: vars.$info-content;
         padding: 3px 8px;
         border-radius: 4px;
       }
@@ -135,7 +135,7 @@
   align-items: center;
   margin: 10px;
   padding: 10px;
-  background-color: #f4f4f4;
+  background-color: vars.$base-200;
   border-radius: 12px;
   width: fit-content;
 
@@ -143,7 +143,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #999;
+    background-color: vars.$neutral;
     margin: 0 2px;
     animation: typing-animation 1.5s infinite ease-in-out;
 

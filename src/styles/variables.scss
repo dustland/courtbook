@@ -1,50 +1,85 @@
 /* Global SCSS variables for consistent styling */
 
-// Colors
-$primary: #3E2AD1;
-$primary-light: #6a48fa;
-$primary-dark: #2a1d9e;
-$secondary: #f5f5f5;
-$background: #f5f7fa;
-$border: #e8e8e8;
-$success: #52c41a;
-$warning: #faad14;
-$error: #f5222d;
-$text-color: #333;
-$text-color-light: #999;
-$text-white: #fff;
-$text-white-soft: rgba(255, 255, 255, 0.8);
-$text-white-muted: rgba(255, 255, 255, 0.6);
-$text-on-light: #333; // Text color for light backgrounds
+@use "sass:color";
+
+// Brand Colors
+$primary: #67b42e;
+$primary-content: #ffffff;
+$primary-focus: color.adjust($primary, $lightness: -10%);
+$primary-subtle: color.adjust($primary, $lightness: 30%);
+
+$secondary: #e67e22;
+$secondary-content: #ffffff;
+$secondary-focus: color.adjust($secondary, $lightness: -10%);
+$secondary-subtle: color.adjust($secondary, $lightness: 30%);
+
+// Base Colors
+$base-100: #ffffff;
+$base-200: #f8f9fa;
+$base-300: #f0f2f5;
+$base-content: #333333;
+
+// State Colors
+$success: #4caf50;
+$success-content: #ffffff;
+$warning: #ff9800;
+$warning-content: #ffffff;
+$error: #f44336;
+$error-content: #ffffff;
+$info: #2196f3;
+$info-content: #ffffff;
+
+// Neutral Colors
+$neutral: #64748b;
+$neutral-content: #ffffff;
+$neutral-focus: color.adjust($neutral, $lightness: -10%);
+$neutral-subtle: color.adjust($neutral, $lightness: 30%);
+
+// Border Colors
+$border-light: #e2e8f0;
+$border-normal: #cbd5e1;
+$border-dark: #64748b;
 
 // Font Sizes
-$font-size-xs: 24rpx;
-$font-size-sm: 36rpx;
-$font-size-md: 40rpx;
-$font-size-lg: 48rpx;
-$font-size-xl: 56rpx;
+$font-size-xs: 12px;
+$font-size-sm: 18px;
+$font-size-md: 24px;
+$font-size-lg: 28px;
+$font-size-xl: 32px;
+$font-size-xxl: 40px;
 
 // Gradients
-$blue-gradient: linear-gradient(to right bottom, #3b7df8, #5590f5);
-$purple-gradient: linear-gradient(to right bottom, #9c6cfe, #b288fd);
-$green-gradient: linear-gradient(to right bottom, #4dd599, #63dfac);
+$gradient-primary: linear-gradient(to right bottom, $primary, $primary-focus);
+$gradient-secondary: linear-gradient(
+  to right bottom,
+  $secondary,
+  $secondary-focus
+);
+$gradient-blend: linear-gradient(to right bottom, $primary, $secondary);
 
 // Shadows
-$shadow-sm: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
-$shadow-md: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
-$shadow-lg: 0 8rpx 25rpx rgba(0, 0, 0, 0.15);
-$shadow-primary: 0 8rpx 25rpx rgba(62, 42, 209, 0.25);
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+$shadow-primary: 0 5px 15px rgba($primary, 0.35);
+$shadow-secondary: 0 5px 15px rgba($secondary, 0.35);
 
 // Border radius
-$radius-sm: 8rpx;
-$radius-md: 15rpx;
-$radius-lg: 20rpx;
-$radius-xl: 30rpx;
-$radius-full: 999rpx;
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 32px;
+$radius-xl: 48px;
+$radius-full: 9999px;
 
 // Spacing
-$spacing-xs: 5rpx;
-$spacing-sm: 10rpx;
-$spacing-md: 15rpx;
-$spacing-lg: 20rpx;
-$spacing-xl: 30rpx; 
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-normal: 0.25s ease;
+$transition-slow: 0.4s ease;

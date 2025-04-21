@@ -12,8 +12,8 @@
   justify-content: space-between;
   align-items: center;
   padding: vars.$spacing-lg;
-  background-color: vars.$primary-light;
-  color: vars.$text-white;
+  background-color: vars.$primary;
+  color: vars.$primary-content;
   border: none;
 
   .greeting-content {
@@ -38,19 +38,19 @@
         .stat-value {
           font-size: vars.$font-size-lg;
           font-weight: bold;
-          color: vars.$text-white;
+          color: vars.$primary-content;
           margin-bottom: vars.$spacing-xs;
         }
 
         .stat-label {
           font-size: vars.$font-size-xs;
-          color: vars.$text-white-soft;
+          color: rgba(255, 255, 255, 0.8);
         }
       }
 
       .stat-divider {
-        width: 2rpx;
-        height: 40rpx;
+        width: 2px;
+        height: 40px;
         background-color: rgba(255, 255, 255, 0.3);
         margin: 0 vars.$spacing-lg;
       }
@@ -58,10 +58,10 @@
   }
 
   .avatar {
-    width: 80rpx;
-    height: 80rpx;
+    width: 80px;
+    height: 80px;
     border-radius: vars.$radius-full;
-    border: 4rpx solid rgba(255, 255, 255, 0.8);
+    border: 4px solid vars.$primary-focus;
     box-shadow: vars.$shadow-sm;
   }
 }
@@ -72,6 +72,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: vars.$base-100;
   padding: vars.$spacing-sm;
 }
 
@@ -82,16 +83,18 @@
 
 // Section containers
 .appointments-container {
-  background: linear-gradient(160deg, #5683fe, #6c63ff);
-  color: vars.$text-white;
+  background: vars.$gradient-primary;
+  color: #ffffff;
   height: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 0;
-  min-height: 280rpx;
+  min-height: 280px;
   flex: 1;
-  border-radius: 15px;
-  padding: 30rpx;
+  border-radius: vars.$radius-xl;
+  border: 1px solid vars.$primary-subtle;
+  box-shadow: vars.$shadow-lg;
+  padding: 30px;
 }
 
 .section-header {
@@ -101,14 +104,14 @@
   z-index: 1;
 
   .section-icon {
-    color: vars.$text-white;
+    color: #ffffff;
     margin-right: vars.$spacing-md;
   }
 
   .section-title {
     font-size: vars.$font-size-md;
     font-weight: bold;
-    color: vars.$text-white;
+    color: #ffffff;
   }
 }
 
@@ -122,7 +125,7 @@
   justify-content: center;
   align-items: center;
   padding: vars.$spacing-sm 0;
-  min-height: 200rpx;
+  min-height: 200px;
 }
 
 .appointment-card {
@@ -130,19 +133,17 @@
   align-items: center;
   padding: vars.$spacing-lg;
   background-color: rgba(255, 255, 255, 0.15);
-  color: vars.$text-white;
+  color: #ffffff;
   backdrop-filter: blur(10px);
-  border-radius: vars.$radius-xl;
+  border-radius: vars.$radius-lg;
   margin-bottom: vars.$spacing-lg;
-  box-shadow: vars.$shadow-md;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   width: 100%;
 
   .appointment-date {
-    width: 120rpx;
-    min-width: 120rpx;
-    height: 120rpx;
-    border-radius: vars.$radius-md;
+    width: 120px;
+    min-width: 120px;
+    height: 120px;
+    border-radius: vars.$radius-lg;
     background-color: rgba(255, 255, 255, 0.2);
     display: flex;
     justify-content: center;
@@ -150,6 +151,7 @@
     margin-right: vars.$spacing-lg;
 
     .date-label {
+      color: vars.$primary-content;
       font-size: vars.$font-size-md;
       font-weight: bold;
       text-align: center;
@@ -162,14 +164,14 @@
     .court-name {
       font-size: vars.$font-size-md;
       font-weight: bold;
-      color: vars.$text-white;
+      color: #ffffff;
       margin-bottom: vars.$spacing-sm;
       display: block;
     }
 
     .time-slot {
       font-size: vars.$font-size-sm;
-      color: vars.$text-white-soft;
+      color: rgba(255, 255, 255, 0.8);
     }
   }
 }
@@ -192,16 +194,19 @@
 
   .empty-text {
     font-size: vars.$font-size-md;
-    color: vars.$text-white-soft;
+    color: rgba(255, 255, 255, 0.8);
   }
 }
 
 .remaining-appointments {
-  padding: 20rpx;
+  padding: 20px;
   text-align: center;
   font-size: vars.$font-size-md;
-  color: vars.$text-white;
-  margin-bottom: 30rpx;
+  color: vars.$primary-content;
+  margin-bottom: 30px;
+  .remaining-text {
+    color: vars.$primary-content;
+  }
 }
 
 // Button styles
@@ -209,19 +214,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(49, 0, 128, 0.8);
-  height: 90rpx;
-  border-radius: 45rpx;
+  background-color: vars.$secondary;
+  height: 90px;
+  border-radius: 45px;
   font-weight: bold;
   position: relative;
   z-index: 1;
   width: 100%;
   align-self: center;
-  margin-top: 20rpx;
+  margin-top: 20px;
 
   .btn-text {
     font-size: vars.$font-size-md;
-    color: vars.$text-white;
+    color: #ffffff;
   }
 }
 
@@ -229,7 +234,7 @@
 .chat-container {
   display: flex;
   flex-direction: column;
-  background-color: vars.$text-white;
+  background-color: vars.$base-100;
   padding: vars.$spacing-md;
 
   .chat-input-container {
@@ -240,33 +245,33 @@
 
     .chat-input {
       border: 1px solid vars.$primary;
-      border-radius: 20rpx;
+      border-radius: 20px;
       padding: vars.$spacing-sm vars.$spacing-lg;
-      height: 80rpx;
+      height: 80px;
       width: 100%;
-      color: vars.$text-color;
+      color: vars.$base-content;
     }
 
     .send-button {
       position: absolute;
       right: vars.$spacing-sm;
-      width: 70rpx;
-      height: 70rpx;
-      border-radius: 35rpx;
+      width: 70px;
+      height: 70px;
+      border-radius: 35px;
       background-color: vars.$primary;
       display: flex;
       justify-content: center;
       align-items: center;
 
       .send-icon {
-        color: vars.$text-white;
+        color: vars.$primary-content;
       }
     }
   }
 }
 
 .no-appointments {
-  color: vars.$text-white;
+  color: #ffffff;
   font-size: vars.$font-size-md;
   text-align: center;
   padding: vars.$spacing-lg;

@@ -17,12 +17,12 @@ export default function Index() {
     console.log("Page loaded.");
   });
 
-  useEffect(() => {
-    Taro.setNavigationBarColor({
-      frontColor: "#ffffff",
-      backgroundColor: "#6a48fa",
-    });
-  }, []);
+  // useEffect(() => {
+  //   Taro.setNavigationBarColor({
+  //     frontColor: "#ffffff",
+  //     backgroundColor: "#6a48fa",
+  //   });
+  // }, []);
 
   const navigateToAppointments = () => {
     Taro.switchTab({
@@ -120,7 +120,9 @@ export default function Index() {
                   {/* If there are more appointments, show a summary line */}
                   {upcomingAppointments.length > 1 && (
                     <View className="remaining-appointments">
-                      <Text>还有 {upcomingAppointments.length - 1} 个预约</Text>
+                      <Text className="remaining-text">
+                        还有 {upcomingAppointments.length - 1} 个预约
+                      </Text>
                     </View>
                   )}
                 </>

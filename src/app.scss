@@ -4,9 +4,10 @@
 
 /* Base font size setting for WeChat mini programs */
 page {
-  background-color: vars.$background;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 40rpx; /* Increased base font size */
+  background-color: vars.$base-100;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px; /* Standard base font size */
 
   /* CSS custom properties for backwards compatibility */
   --font-size-xs: #{vars.$font-size-xs};
@@ -14,73 +15,108 @@ page {
   --font-size-md: #{vars.$font-size-md};
   --font-size-lg: #{vars.$font-size-lg};
   --font-size-xl: #{vars.$font-size-xl};
-  
-  --primary-color: #{vars.$primary};
-  --primary-light: #{vars.$primary-light};
-  --primary-dark: #{vars.$primary-dark};
-  --secondary-color: #{vars.$secondary};
-  --text-color: #{vars.$text-color};
-  --text-color-light: #{vars.$text-color-light};
-  --text-white: #{vars.$text-white};
-  --text-white-soft: #{vars.$text-white-soft};
-  --text-white-muted: #{vars.$text-white-muted};
-  --text-on-light: #{vars.$text-on-light};
-  --background-color: #{vars.$background};
-  --border-color: #{vars.$border};
-  --success-color: #{vars.$success};
-  --warning-color: #{vars.$warning};
-  --error-color: #{vars.$error};
-  
-  --blue-gradient: #{vars.$blue-gradient};
-  --purple-gradient: #{vars.$purple-gradient};
-  --green-gradient: #{vars.$green-gradient};
-  
+  --font-size-xxl: #{vars.$font-size-xxl};
+
+  --primary: #{vars.$primary};
+  --primary-content: #{vars.$primary-content};
+  --primary-focus: #{vars.$primary-focus};
+  --primary-subtle: #{vars.$primary-subtle};
+
+  --secondary: #{vars.$secondary};
+  --secondary-content: #{vars.$secondary-content};
+  --secondary-focus: #{vars.$secondary-focus};
+  --secondary-subtle: #{vars.$secondary-subtle};
+
+  --base-100: #{vars.$base-100};
+  --base-200: #{vars.$base-200};
+  --base-300: #{vars.$base-300};
+  --base-content: #{vars.$base-content};
+
+  --success: #{vars.$success};
+  --success-content: #{vars.$success-content};
+  --warning: #{vars.$warning};
+  --warning-content: #{vars.$warning-content};
+  --error: #{vars.$error};
+  --error-content: #{vars.$error-content};
+  --info: #{vars.$info};
+  --info-content: #{vars.$info-content};
+
+  --neutral: #{vars.$neutral};
+  --neutral-content: #{vars.$neutral-content};
+  --neutral-focus: #{vars.$neutral-focus};
+  --neutral-subtle: #{vars.$neutral-subtle};
+
+  --border-light: #{vars.$border-light};
+  --border-normal: #{vars.$border-normal};
+  --border-dark: #{vars.$border-dark};
+
+  --gradient-primary: #{vars.$gradient-primary};
+  --gradient-secondary: #{vars.$gradient-secondary};
+  --gradient-blend: #{vars.$gradient-blend};
+
   --shadow-sm: #{vars.$shadow-sm};
   --shadow-md: #{vars.$shadow-md};
   --shadow-lg: #{vars.$shadow-lg};
   --shadow-primary: #{vars.$shadow-primary};
-  
+  --shadow-secondary: #{vars.$shadow-secondary};
+
   --radius-sm: #{vars.$radius-sm};
   --radius-md: #{vars.$radius-md};
   --radius-lg: #{vars.$radius-lg};
   --radius-xl: #{vars.$radius-xl};
   --radius-full: #{vars.$radius-full};
-  
+
   --spacing-xs: #{vars.$spacing-xs};
   --spacing-sm: #{vars.$spacing-sm};
   --spacing-md: #{vars.$spacing-md};
   --spacing-lg: #{vars.$spacing-lg};
   --spacing-xl: #{vars.$spacing-xl};
+  --spacing-xxl: #{vars.$spacing-xxl};
+
+  --transition-fast: #{vars.$transition-fast};
+  --transition-normal: #{vars.$transition-normal};
+  --transition-slow: #{vars.$transition-slow};
 }
 
 /* Setting default text sizes for common elements */
-text, view, button, input, .weui-input {
+text,
+view,
+button,
+input,
+.weui-input {
   font-size: vars.$font-size-md;
-  color: vars.$text-color;
+  color: vars.$base-content;
 }
 
 /* Fix common elements that might appear too small */
-.title, h1, h2, h3, .header .title {
+.title,
+h1,
+h2,
+h3,
+.header .title {
   font-size: vars.$font-size-lg;
   font-weight: bold;
-  color: vars.$text-color;
+  color: vars.$base-content;
 }
 
-.small-text, .timestamp {
+.small-text,
+.timestamp {
   font-size: vars.$font-size-sm;
-  color: vars.$text-color-light;
+  color: vars.$neutral;
 }
 
-button, .button {
+button,
+.button {
   font-size: vars.$font-size-md;
-  min-height: 90rpx;
+  min-height: 44px;
   line-height: 1.5;
 }
 
-input, .input {
-  height: 90rpx;
+input,
+.input {
+  height: 44px;
   font-size: vars.$font-size-md;
-  color: vars.$text-color;
+  color: vars.$base-content;
 }
 
 /* Common utility classes for layouts */
@@ -105,4 +141,41 @@ input, .input {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+/* Button variants */
+.btn-primary {
+  background-color: vars.$primary;
+  color: vars.$primary-content;
+}
+
+.btn-secondary {
+  background-color: vars.$secondary;
+  color: vars.$secondary-content;
+}
+
+.btn-neutral {
+  background-color: vars.$neutral;
+  color: vars.$neutral-content;
+}
+
+/* Alert/message variants */
+.alert-info {
+  background-color: vars.$info;
+  color: vars.$info-content;
+}
+
+.alert-success {
+  background-color: vars.$success;
+  color: vars.$success-content;
+}
+
+.alert-warning {
+  background-color: vars.$warning;
+  color: vars.$warning-content;
+}
+
+.alert-error {
+  background-color: vars.$error;
+  color: vars.$error-content;
 }
