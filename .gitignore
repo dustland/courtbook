@@ -2,10 +2,15 @@
 /node_modules
 /.pnp
 .pnp.js
+# Ignore all nested node_modules in cloudfunctions
+/cloudfunctions/*/node_modules
+/cloudfunctions/*/*/node_modules
 
 # production
 /dist
 /build
+/cloudfunctions/*/built
+/cloudfunctions/*/*/built
 
 # debug
 npm-debug.log*

@@ -10,7 +10,7 @@
     "framework": "React"
   },
   "scripts": {
-    "build:cloudfunctions": "cd cloudfunctions/appointments && pnpm build",
+    "build:cloudfunctions": "cd cloudfunctions/appointments && pnpm build && cd ../users && pnpm build",
     "build:weapp": "pnpm build:cloudfunctions && taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
