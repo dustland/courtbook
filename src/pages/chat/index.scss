@@ -30,22 +30,19 @@
   }
 
   .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    border: 3px solid var(--primary-color);
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    flex-shrink: 0;
   }
 
-  .input-container {
-    padding: 10px 15px 20px;
-    border-top: 1px solid vars.$border-light;
+  .chat-container {
+    display: flex;
+    flex-direction: column;
     background-color: vars.$base-100;
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    gap: vars.$spacing-md;
+    padding: vars.$spacing-md;
     width: 100%;
-    box-shadow: vars.$shadow-sm;
     box-sizing: border-box;
   }
 

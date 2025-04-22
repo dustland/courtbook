@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Input, Text, Button } from "@tarojs/components";
+import { View, Input, Text } from "@tarojs/components";
 import Icon from "./icon";
 import "./chat-input.scss";
 
@@ -50,13 +50,13 @@ const ChatInput: React.FC<ChatInputProps> = ({
       {showQuickQuestions && quickQuestions.length > 0 && (
         <View className="quick-questions">
           {quickQuestions.map((item, index) => (
-            <Button
+            <View
               key={`quick-question-${index}`}
               className="quick-question"
               onClick={() => handleQuickQuestion(item.question)}
             >
               <Text className="question-text">{item.question}</Text>
-            </Button>
+            </View>
           ))}
         </View>
       )}

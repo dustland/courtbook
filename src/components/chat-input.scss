@@ -3,40 +3,32 @@
 .chat-input-wrapper {
   display: flex;
   flex-direction: column;
+  gap: vars.$spacing-md;
   width: 100%;
   max-width: 100%;
-  box-sizing: border-box;
 
   .quick-questions {
     display: flex;
     flex-direction: column;
     gap: vars.$spacing-sm;
-    margin-bottom: vars.$spacing-md;
-    padding: 0 vars.$spacing-sm;
-    box-sizing: border-box;
     width: 100%;
 
     .quick-question {
       width: 100%;
+      border: 1px solid vars.$border-light;
+      border-radius: vars.$radius-xl;
       box-sizing: border-box;
+      padding: vars.$spacing-md;
+      transition: vars.$transition-fast;
+      background-color: vars.$base-200;
+      &:hover,
+      &:active {
+        background-color: vars.$base-300;
+      }
 
       .question-text {
-        color: rgba(0, 0, 0, 0.5);
-        width: 100%;
-        text-align: center;
+        color: vars.$base-content;
         font-size: vars.$font-size-sm;
-        background-color: vars.$base-200;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: vars.$radius-lg;
-        padding: vars.$spacing-md;
-        display: block;
-        transition: vars.$transition-fast;
-        box-sizing: border-box;
-
-        &:hover,
-        &:active {
-          background-color: vars.$base-300;
-        }
       }
     }
   }
@@ -47,8 +39,6 @@
     position: relative;
     width: 100%;
     background-color: vars.$base-100;
-    padding: vars.$spacing-md;
-    border-top: 1px solid vars.$border-light;
     box-sizing: border-box;
 
     .chat-input {
@@ -70,7 +60,7 @@
 
     .send-button {
       position: absolute;
-      right: vars.$spacing-lg;
+      right: vars.$spacing-sm;
       width: 60px;
       height: 60px;
       border-radius: vars.$radius-full;

@@ -359,7 +359,7 @@ export default function Chat() {
         {isLoading && <TypingIndicator />}
       </ScrollView>
 
-      <View className="input-container">
+      <View className="chat-container">
         <ChatInput
           onSend={handleSend}
           placeholder="输入您的问题..."

@@ -39,28 +39,9 @@ export default function Profile() {
         </View>
       </View>
 
-      <View className="section-header">
-        <Icon value="calendar" size={18} className="icon-primary" />
-        <Text className="section-title">活动统计</Text>
-      </View>
-
       <ActivityChart />
 
       <View className="menu-list">
-        <View className="menu-item">
-          <View className="menu-item-left">
-            <Icon value="settings" size={20} className="menu-icon" />
-            <Text className="menu-text">设置</Text>
-          </View>
-          <Icon value="chevron-right" size={16} className="menu-arrow" />
-        </View>
-        <View className="menu-item">
-          <View className="menu-item-left">
-            <Icon value="help" size={20} className="menu-icon" />
-            <Text className="menu-text">帮助中心</Text>
-          </View>
-          <Icon value="chevron-right" size={16} className="menu-arrow" />
-        </View>
         <View className="menu-item">
           <View className="menu-item-left">
             <Icon value="message" size={20} className="menu-icon" />

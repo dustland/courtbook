@@ -1,7 +1,7 @@
 import { View, Text } from "@tarojs/components";
 import React, { useState, useEffect } from "react";
 import "./activity-chart.scss";
-
+import Icon from "@/components/icon";
 interface Activity {
   date: string;
   count: number;
@@ -219,6 +219,33 @@ const ActivityChart: React.FC = () => {
 
   return (
     <View className="activity-chart">
+      <View className="chart-title-container">
+        <View className="chart-title">
+          <Icon value="calendar" size={18} className="icon-primary" />
+          <Text className="chart-title-text">活动统计</Text>
+        </View>
+        <View className="legend">
+          <View className="legend-items">
+            <View className="legend-item">
+              <View className="color-box level-0"></View>
+              <Text>无</Text>
+            </View>
+            <View className="legend-item">
+              <View className="color-box level-1"></View>
+              <Text>低</Text>
+            </View>
+            <View className="legend-item">
+              <View className="color-box level-2"></View>
+              <Text>中</Text>
+            </View>
+            <View className="legend-item">
+              <View className="color-box level-3"></View>
+              <Text>高</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+
       <View className="contribution-grid">
         {monthRows.map((row, rowIndex) => (
           <View key={`row-${rowIndex}`} className="month-row">
@@ -266,27 +293,6 @@ const ActivityChart: React.FC = () => {
             ))}
           </View>
         ))}
-      </View>
-
-      <View className="legend">
-        <View className="legend-items">
-          <View className="legend-item">
-            <View className="color-box level-0"></View>
-            <Text>无</Text>
-          </View>
-          <View className="legend-item">
-            <View className="color-box level-1"></View>
-            <Text>低</Text>
-          </View>
-          <View className="legend-item">
-            <View className="color-box level-2"></View>
-            <Text>中</Text>
-          </View>
-          <View className="legend-item">
-            <View className="color-box level-3"></View>
-            <Text>高</Text>
-          </View>
-        </View>
       </View>
     </View>
   );
