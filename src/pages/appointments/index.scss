@@ -1,96 +1,254 @@
 @use "../../styles/variables.scss" as vars;
 
 .appointments-page {
-  padding-bottom: 100px;
+  padding-bottom: 30px;
+  position: relative;
+  min-height: 100vh;
   background-color: vars.$base-200;
+
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
   .header {
     display: flex;
     align-items: center;
-    padding: 20px 15px;
+    justify-content: space-between;
+    padding: 16px;
     background-color: vars.$base-100;
-    margin-bottom: 5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 
     .header-left {
       display: flex;
       align-items: center;
-    }
 
-    .back-button {
-      margin-right: 10px;
-      color: vars.$base-content;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+      .back-button {
+        margin-right: 8px;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: vars.$base-200;
+        border-radius: 50%;
+      }
 
-    .title {
-      font-weight: bold;
-      color: vars.$base-content;
-    }
-
-    .badge {
-      margin-left: 10px;
-      background-color: vars.$primary;
-      color: vars.$primary-content;
-      min-width: 18px;
-      height: 18px;
-      line-height: 18px;
-      border-radius: 10px;
-      text-align: center;
-      padding: 0 5px;
-    }
-  }
-
-  .filter-tabs {
-    display: flex;
-    background-color: vars.$base-100;
-    padding: 0 15px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #eee;
-
-    .filter-tab {
-      padding: 12px 15px;
-      color: vars.$neutral;
-      position: relative;
-
-      &.active {
-        color: vars.$primary;
+      .title {
+        font-size: vars.$font-size-md;
         font-weight: bold;
-
-        &:after {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          left: 25%;
-          width: 50%;
-          height: 3px;
-          background-color: vars.$primary;
-          border-radius: 3px;
-        }
+        color: vars.$base-content;
       }
     }
   }
 
-  .appointments-list {
-    padding-top: 10px;
-  }
+  .time-slots-section {
+    background-color: #fff;
+    border-radius: 12px;
+    margin: 0 12px 16px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
-  .empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 50px 0;
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
 
-    .empty-text {
-      margin-top: 15px;
-      color: vars.$neutral;
+      .section-title {
+        font-size: vars.$font-size-md;
+        font-weight: bold;
+        color: vars.$base-content;
+      }
     }
 
-    .empty-icon {
-      filter: grayscale(100%) opacity(0.3);
-      margin-bottom: 20px;
+    .time-slots-scroll {
+      white-space: nowrap;
+      display: flex;
+    }
+
+    .time-slot-item {
+      display: inline-block;
+      padding: 10px 16px;
+      margin-right: 12px;
+      background-color: vars.$base-200;
+      border-radius: 8px;
+      text-align: center;
+
+      &.selected {
+        background-color: vars.$primary;
+        color: vars.$primary-content;
+      }
+
+      .time {
+        font-size: vars.$font-size-sm;
+      }
+    }
+
+    .empty-slots {
+      text-align: center;
+      padding: 20px 0;
+      color: vars.$neutral;
+    }
+  }
+
+  .my-appointments-section {
+    background-color: #fff;
+    border-radius: 12px;
+    margin: 0 12px 16px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+
+      .section-title {
+        font-size: vars.$font-size-md;
+        font-weight: bold;
+        color: vars.$base-content;
+      }
+
+      .filter-tabs {
+        display: flex;
+        background-color: vars.$base-200;
+        border-radius: 20px;
+        overflow: hidden;
+
+        .filter-tab {
+          padding: 6px 12px;
+          font-size: vars.$font-size-sm;
+          color: vars.$base-content;
+          position: relative;
+
+          &.active {
+            background-color: vars.$primary;
+            color: vars.$primary-content;
+          }
+
+          .count-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: vars.$error;
+            color: vars.$error-content;
+            border-radius: 10px;
+            padding: 0 6px;
+            font-size: vars.$font-size-xs;
+            min-width: 16px;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .empty-appointments {
+      text-align: center;
+      padding: 30px 0;
+      color: vars.$neutral;
+    }
+  }
+
+  .booking-confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+
+    .booking-confirm-dialog {
+      width: 80%;
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+
+      .booking-confirm-header {
+        padding: 15px;
+        background-color: vars.$primary;
+        text-align: center;
+
+        .booking-confirm-title {
+          color: vars.$primary-content;
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+
+      .booking-confirm-content {
+        padding: 20px;
+
+        .booking-detail {
+          display: flex;
+          margin-bottom: 12px;
+
+          .booking-label {
+            color: vars.$neutral;
+            min-width: 60px;
+          }
+
+          .booking-value {
+            font-weight: bold;
+          }
+        }
+      }
+
+      .booking-confirm-actions {
+        display: flex;
+        border-top: 1px solid vars.$base-200;
+
+        .cancel-button,
+        .confirm-button {
+          flex: 1;
+          border-radius: 0;
+          height: 50px;
+          line-height: 50px;
+          margin: 0;
+          font-size: 16px;
+        }
+
+        .cancel-button {
+          background-color: vars.$neutral;
+          color: vars.$neutral-content;
+          border-right: 1px solid vars.$base-200;
+        }
+
+        .confirm-button {
+          background-color: vars.$primary;
+          color: vars.$primary-content;
+        }
+      }
     }
   }
 }

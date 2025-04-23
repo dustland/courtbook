@@ -41,8 +41,7 @@
     width: 32%;
 
     .month-name {
-      font-size: vars.$font-size-md;
-      font-weight: bold;
+      font-size: vars.$font-size-sm;
       color: vars.$base-content;
       margin-bottom: 10px;
       display: block;
@@ -55,8 +54,8 @@
     margin-bottom: 5px;
 
     .day-label {
-      font-size: 10px;
-      color: #666;
+      font-size: vars.$font-size-xs;
+      color: vars.$neutral;
       text-align: center;
     }
   }

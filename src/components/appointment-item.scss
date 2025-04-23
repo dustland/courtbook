@@ -1,13 +1,20 @@
 @use "../styles/variables.scss" as vars;
 
+.appointment-swiper {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
 .appointment-item {
   background-color: vars.$base-100;
   border-radius: 12px;
   padding: 15px;
-  margin: 0 15px 15px;
+  margin: 0 15px;
   box-shadow: vars.$shadow-sm;
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   &.past {
     opacity: 0.7;
@@ -17,6 +24,13 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 12px;
+    align-items: center;
+
+    .swipe-hint {
+      font-size: 12px;
+      color: vars.$neutral;
+      opacity: 0.6;
+    }
   }
 
   .appointment-status {
@@ -100,4 +114,17 @@
       color: vars.$secondary-content;
     }
   }
+}
+
+.delete-action {
+  background-color: vars.$error;
+  color: vars.$error-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 12px;
+  margin: 0 15px;
+  font-weight: bold;
+  font-size: 16px;
 }
