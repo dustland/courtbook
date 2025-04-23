@@ -4,6 +4,9 @@
   "description": "Court Book",
   "appid": "wxaed65dd577328f04",
   "cloudfunctionRoot": "./cloudfunctions",
+  "cloudbase": {
+    "env": "courtbook-4g2151pyeb948084"
+  },
   "setting": {
     "urlCheck": true,
     "es6": true,

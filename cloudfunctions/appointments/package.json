@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "wx-server-sdk": "~2.6.3",
+    "wx-server-sdk": "latest",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {

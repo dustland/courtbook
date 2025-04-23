@@ -2,10 +2,21 @@
 import cloud from "wx-server-sdk";
 import { User } from "./types";
 
+// Add more precise type declaration for wx-server-sdk
+declare module "wx-server-sdk" {
+  interface Cloud {
+    DYNAMIC_CURRENT_ENV:
+      | string
+      | {
+          database?: string;
+          functions?: string;
+          storage?: string;
+        };
+  }
+}
+
 // Initialize the cloud environment
-cloud.init({
-  env: process.env.CLOUD_ENV || "cloud1",
-});
+cloud.init();
 
 // Get database reference
 const db = cloud.database();
@@ -69,10 +80,12 @@ export async function main(event: any, context: any) {
  * @param params User data
  * @returns Response with user data
  */
-async function upsertUser(params: { openId?: string; userInfo?: any }) {
+async function upsertUser(params: { code?: string; userInfo?: any }) {
   try {
-    // Get the user's OpenID if not provided
-    const openId = params.openId || cloud.getWXContext().OPENID;
+    // Get the user's OpenID directly from the context
+    // WeChat cloud functions can access this automatically
+    const wxContext = cloud.getWXContext();
+    const openId = wxContext.OPENID;
 
     if (!openId) {
       return {
@@ -125,16 +138,15 @@ async function upsertUser(params: { openId?: string; userInfo?: any }) {
       // Update existing user
       const existingUser = userQuery.data[0] as User;
 
-      userData = {
-        ...existingUser,
+      // Create update data object without _id field
+      const updateData = {
         updateTime: now,
         lastLoginTime: now,
       };
 
       // Update user profile if provided
       if (params.userInfo) {
-        userData = {
-          ...userData,
+        Object.assign(updateData, {
           nickName: params.userInfo.nickName || existingUser.nickName,
           avatarUrl: params.userInfo.avatarUrl || existingUser.avatarUrl,
           gender:
@@ -145,22 +157,30 @@ async function upsertUser(params: { openId?: string; userInfo?: any }) {
           province: params.userInfo.province || existingUser.province,
           city: params.userInfo.city || existingUser.city,
           language: params.userInfo.language || existingUser.language,
-        };
+        });
       }
 
       // Update the user in the database
       await usersCollection.doc(existingUser._id!).update({
-        data: {
-          ...userData,
-          _id: undefined, // Remove _id from update data
-        },
+        data: updateData,
       });
+
+      // Set userData for response
+      userData = {
+        ...existingUser,
+        ...updateData,
+      };
     }
 
     return {
       code: 200,
       message: "User data saved successfully",
-      data: userData,
+      data: {
+        userData,
+        openid: wxContext.OPENID,
+        appid: wxContext.APPID,
+        unionid: wxContext.UNIONID,
+      },
     };
   } catch (error: any) {
     console.error("Error upserting user:", error);
@@ -177,7 +197,8 @@ async function upsertUser(params: { openId?: string; userInfo?: any }) {
 async function getUser(params: { openId?: string }) {
   try {
     // Get the user's OpenID if not provided
-    const openId = params.openId || cloud.getWXContext().OPENID;
+    const wxContext = cloud.getWXContext();
+    const openId = params.openId || wxContext.OPENID;
 
     if (!openId) {
       return {
@@ -222,7 +243,8 @@ async function getUser(params: { openId?: string }) {
 async function updateUserProfile(params: { openId?: string; userInfo: any }) {
   try {
     // Get the user's OpenID if not provided
-    const openId = params.openId || cloud.getWXContext().OPENID;
+    const wxContext = cloud.getWXContext();
+    const openId = params.openId || wxContext.OPENID;
 
     if (!openId) {
       return {
@@ -250,10 +272,13 @@ async function updateUserProfile(params: { openId?: string; userInfo: any }) {
     const existingUser = userQuery.data[0] as User;
     const now = Date.now();
 
+    // Create a clean update object from userInfo, removing _id if present
+    const { _id, ...userInfoWithoutId } = params.userInfo;
+
     // Update user profile
     const updateData = {
       updateTime: now,
-      ...params.userInfo,
+      ...userInfoWithoutId,
     };
 
     await usersCollection.doc(existingUser._id!).update({

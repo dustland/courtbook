@@ -12,8 +12,8 @@ importers:
         specifier: ^16.3.1
         version: 16.5.0
       wx-server-sdk:
-        specifier: ~2.6.3
-        version: 2.6.3(typescript@5.8.3)
+        specifier: latest
+        version: 3.0.1
     devDependencies:
       '@serverless/tencent-scf':
         specifier: ^3.0.0
@@ -30,21 +30,15 @@ importers:
 
 packages:
 
-  '@cloudbase/database@0.9.15':
-    resolution: {integrity: sha512-63e7iIl+van41B39Tw4ScNe9TRCt+5GHjc7q6i8NzkWBLC3U3KlbWo79YHsUHUPI79POpQ8UMlMVo7HXIAO3dg==}
-
   '@cloudbase/database@1.4.1':
     resolution: {integrity: sha512-BYLXHS6c+WhxAvvdak8Z3W+heScqBBPu/CQ76gC8v1Scuy5qf4qxuPWNzyoxde/eZsmc+BRRCFyIq4xUnIot8g==}
 
-  '@cloudbase/node-sdk@2.9.1':
-    resolution: {integrity: sha512-4JGLiy9/Ko7d1pnBgq5mtIUm5v9ig1tHqAeLrkMc8b4vVBRTnYlxJer3uKXq6+9fjLprxNyRSahEg4QR8/Gbkw==}
+  '@cloudbase/node-sdk@2.10.0':
+    resolution: {integrity: sha512-P9loxdwN6qG3iIzjx2Z3uBk/4iyn9+KoiWYGi9ZwhWP1toijpQu0+eLSAaMupNJecJopS21IWUmmGSetlZh8UA==}
     engines: {node: '>=8.6.0'}
 
   '@cloudbase/signature-nodejs@1.0.0-beta.0':
     resolution: {integrity: sha512-gpKqwsVk/D2PzvFamYNReymXSdvRSY90eZ1ARf+1wZ8oT6OpK9kr6nmevGykMxN1n17Gn92hBbWqAxU9o3+kAQ==}
-
-  '@cloudbase/signature-nodejs@1.1.0':
-    resolution: {integrity: sha512-Uqj7tbeAufyAl8xxHr0BxmO9mcfjYqs/FNTDif/38KeRRB438kRlnqd06nXNkJdJWgryw0xQGDxiywVxbAaLxg==}
 
   '@colors/colors@1.6.0':
     resolution: {integrity: sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA==}
@@ -145,9 +139,6 @@ packages:
   '@types/keyv@3.1.4':
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
 
-  '@types/long@4.0.2':
-    resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
-
   '@types/minimatch@5.1.2':
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
 
@@ -165,9 +156,6 @@ packages:
 
   '@types/responselike@1.0.3':
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==}
-
-  '@types/retry@0.12.5':
-    resolution: {integrity: sha512-3xSjTp3v03X/lSQLkczaN9UIEwJMoMCA1+Nb5HfbJEQWogdeQIyVtTvxPXDQjZ5zws8rFQfVfRdz03ARihPJgw==}
 
   '@types/tough-cookie@4.0.5':
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
@@ -246,9 +234,6 @@ packages:
   archiver@3.1.1:
     resolution: {integrity: sha512-5Hxxcig7gw5Jod/8Gq0OneVgLYET+oNHcxgWItq4TbhOzRLKNAFUb9edAftiMKXvXfCB0vbGrJdZDNq0dWMsxg==}
     engines: {node: '>= 6'}
-
-  arg@4.1.3:
-    resolution: {integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==}
 
   argparse@1.0.10:
     resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
@@ -368,9 +353,6 @@ packages:
   blob@0.0.5:
     resolution: {integrity: sha512-gaqbzQPqOoamawKg0LGVd7SzLgXS+JH61oWprSLH+P+abTczqJbhTR8CmJ2u9/bUYNmHTGJx/UEmn6doAvvuig==}
 
-  bluebird@3.7.2:
-    resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
-
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
 
@@ -394,9 +376,6 @@ packages:
 
   buffer-equal-constant-time@1.0.1:
     resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
-
-  buffer-from@1.1.2:
-    resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
   buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
@@ -722,10 +701,6 @@ packages:
   destroy@1.2.0:
     resolution: {integrity: sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==}
     engines: {node: '>= 0.8', npm: 1.2.8000 || >= 1.4.16}
-
-  diff@4.0.2:
-    resolution: {integrity: sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==}
-    engines: {node: '>=0.3.1'}
 
   dijkstrajs@1.0.3:
     resolution: {integrity: sha512-qiSlmBq9+BCdCA/L46dw8Uy93mloxsPSbwnm5yrKn2vMPiy8KyAskTF6zuV/j5BMsmOGZDPs7KjU+mjb670kfA==}
@@ -1397,9 +1372,6 @@ packages:
   lodash.isstring@4.0.1:
     resolution: {integrity: sha512-0wJxfxH1wgO3GrbuP+dTTk7op+6L41QCXbGINEmD+ny/G/eCqGzxyCsh7159S+mgDDcoarnBw6PC1PS5+wUGgw==}
 
-  lodash.merge@4.6.2:
-    resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-
   lodash.once@4.1.1:
     resolution: {integrity: sha512-Sb487aTOCr9drQVL8pIxOzVhafOjZN9UU54hiN8PU3uAiSV7lx1yYNpbNmex2PK6dSJoNTSJUUswT651yww3Mg==}
 
@@ -1423,8 +1395,8 @@ packages:
     resolution: {integrity: sha512-TFYA4jnP7PVbmlBIfhlSe+WKxs9dklXMTEGcBCIvLhE/Tn3H6Gk1norupVW7m5Cnd4bLcr08AytbyV/xj7f/kQ==}
     engines: {node: '>= 12.0.0'}
 
-  long@4.0.0:
-    resolution: {integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==}
+  long@5.3.2:
+    resolution: {integrity: sha512-mNAgZ1GmyNhD7AuqnTG3/VQ26o760+ZYBPKjPvugO8+nLbYfX6TVpJPseBvopbdY+qpZ/lKUnmEc1LeZYS3QAA==}
 
   lowercase-keys@1.0.1:
     resolution: {integrity: sha512-G2Lj61tXDnVFFOi8VZds+SoQjtQC3dgokKdDG2mTm1tx4m50NUHBOZSBwQQHyy0V12A0JTG4icfZQH+xPyh8VA==}
@@ -1437,9 +1409,6 @@ packages:
   make-dir@3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
-
-  make-error@1.3.6:
-    resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==}
 
   map-cache@0.2.2:
     resolution: {integrity: sha512-8y/eV9QQZCiyn1SprXSrCmqJN0yNRATe+PO8ztwqrvrbdRLA3eYJF0yaR0YayLWkMbsQSKWS9N2gPcGEc4UsZg==}
@@ -1728,9 +1697,9 @@ packages:
   process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
 
-  protobufjs@6.11.4:
-    resolution: {integrity: sha512-5kQWPaJHi1WoCpjTGszzQ32PG2F4+wRY6BmAT4Vfw56Q2FZ4YZzK20xUYQH4YkfehY1e6QSICrJquM6xXZNcrw==}
-    hasBin: true
+  protobufjs@7.5.0:
+    resolution: {integrity: sha512-Z2E/kOY1QjoMlCytmexzYfDm/w5fKAiRwpSzGtdnXW1zC88Z2yXazHHrOtwCzn+7wSxyE8PYM4rvVcMphF9sOA==}
+    engines: {node: '>=12.0.0'}
 
   psl@1.15.0:
     resolution: {integrity: sha512-JZd3gMVBAVQkSs6HdNZo9Sdo0LNcQeMNP3CozBJb3JYC/QUYZTnKxP+f8oWRX4rHP5EurWxqAHTSwUCjlNKa1w==}
@@ -1824,13 +1793,6 @@ packages:
     peerDependencies:
       request: ^2.34
 
-  request-promise@4.2.6:
-    resolution: {integrity: sha512-HCHI3DJJUakkOr8fNoCc73E5nU5bqITjOYFMDrKHYOXWXrgD/SBaC7LjwuPymUprRyuF06UK7hd/lMHkmUXglQ==}
-    engines: {node: '>=0.10.0'}
-    deprecated: request-promise has been deprecated because it extends the now deprecated request package, see https://github.com/request/request/issues/3142
-    peerDependencies:
-      request: ^2.34
-
   request@2.88.2:
     resolution: {integrity: sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==}
     engines: {node: '>= 6'}
@@ -1862,8 +1824,8 @@ packages:
     resolution: {integrity: sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg==}
     engines: {node: '>=0.12'}
 
-  retry@0.12.0:
-    resolution: {integrity: sha512-9LkiTwjUh6rT555DtE9rTX+BKByPfrMzEAtnlEtdEwr3Nkffwiihqe2bWADg+OQRjt9gl6ICdmB/ZFDCGAtSow==}
+  retry@0.13.1:
+    resolution: {integrity: sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==}
     engines: {node: '>= 4'}
 
   reusify@1.1.0:
@@ -2016,19 +1978,12 @@ packages:
     resolution: {integrity: sha512-Htz+RnsXWk5+P2slx5Jh3Q66vhQj1Cllm0zvnaY98+NFx+Dv2CF/f5O/t8x+KaNdrdIAsruNzoh/KpialbqAnw==}
     deprecated: See https://github.com/lydell/source-map-resolve#deprecated
 
-  source-map-support@0.5.21:
-    resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
-
   source-map-url@0.4.1:
     resolution: {integrity: sha512-cPiFOTLUKvJFIg4SKVScy4ilPPW6rFgMgfuZJPNoDuMs3nC1HbMUycBoJw77xFIp6z1UJQJOfx6C9GMH80DiTw==}
     deprecated: See https://github.com/lydell/source-map-url#deprecated
 
   source-map@0.5.7:
     resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}
-    engines: {node: '>=0.10.0'}
-
-  source-map@0.6.1:
-    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
 
   split-string@3.1.0:
@@ -2118,10 +2073,6 @@ packages:
     resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
     engines: {node: '>=6'}
 
-  tcb-admin-node@1.23.0:
-    resolution: {integrity: sha512-SAbjTqMsSi63SId1BJ4kWdyGJzhxh9Tjvy3YXxcsoaAC2PtASn4UIYsBsiNEUfcn58QEn2tdvCvvf69WLLjjrg==}
-    engines: {node: '>=8.6.0'}
-
   tencentcloud-sdk-nodejs@3.0.270:
     resolution: {integrity: sha512-+rK49nvbjcUylMRfksDAs3quDBcdTccTI3oulgJWWw83Bl/3bMmcMBxAew3JqDazENz9RufuW3T91k4tLPR/wQ==}
     engines: {node: '>=7.10.0'}
@@ -2177,13 +2128,6 @@ packages:
   triple-beam@1.4.1:
     resolution: {integrity: sha512-aZbgViZrg1QNcG+LULa7nhZpJTZSLm/mXnHXnbAbjmN5aSa0y7V+wvv6+4WaBtpISJzThKy+PIPxc1Nq1EJ9mg==}
     engines: {node: '>= 14.0.0'}
-
-  ts-node@8.10.2:
-    resolution: {integrity: sha512-ISJJGgkIpDdBhWVu3jufsWpK3Rzo7bdiIXJjQc0ynKxVOVcg2oIrf2H2cejminGrptVc6q6/uynAHNCuWGbpVA==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    peerDependencies:
-      typescript: '>=2.7'
 
   tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
@@ -2328,11 +2272,11 @@ packages:
   wtf-8@1.0.0:
     resolution: {integrity: sha512-qfR6ovmRRMxNHgUNYI9LRdVofApe/eYrv4ggNOvvCP+pPdEo9Ym93QN4jUceGD6PignBbp2zAzgoE7GibAdq2A==}
 
-  wx-server-sdk@2.6.3:
-    resolution: {integrity: sha512-wCSAO94HScMVnalb4WVbOqjTyKxus4/jPYV41ct9liHXv/hGGlDqUWV1vb1icyQKXp+mSslvpBNNjYnZAM5MVA==}
+  wx-server-sdk@3.0.1:
+    resolution: {integrity: sha512-b53tbqTV9knXJIfcmWTmksQvk+BC54vTU6WZNwEvAJ3iOxrRhPitcygyiwFfMBWpFm9YvkwITEhU821XoG8llQ==}
 
-  xml2js@0.4.23:
-    resolution: {integrity: sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug==}
+  xml2js@0.5.0:
+    resolution: {integrity: sha512-drPFnkQJik/O+uPKpqSgr22mpuFHqKdbS835iAQrUC73L2F5WkboIRd63ai/2Yg6I1jzifPFKH2NTK+cfglkIA==}
     engines: {node: '>=4.0.0'}
 
   xmlbuilder@11.0.1:
@@ -2361,22 +2305,11 @@ packages:
     resolution: {integrity: sha512-2OQsPNEmBCvXuFlIni/a+Rn+R2pHW9INm0BxXJ4hVDA8TirqMj+J/Rp9ItLatT/5pZqWwefVrTQcHpixsxnVlA==}
     engines: {node: '>= 4.0.0'}
 
-  yn@3.1.1:
-    resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
-    engines: {node: '>=6'}
-
   zip-stream@2.1.3:
     resolution: {integrity: sha512-EkXc2JGcKhO5N5aZ7TmuNo45budRaFGHOmz24wtJR7znbNqDPmdZtUauKX6et8KAVseAMBOyWJqEpXcHTBsh7Q==}
     engines: {node: '>= 6'}
 
 snapshots:
-
-  '@cloudbase/database@0.9.15':
-    dependencies:
-      bson: 4.7.2
-      lodash.clonedeep: 4.5.0
-      lodash.set: 4.3.2
-      lodash.unset: 4.5.2
 
   '@cloudbase/database@1.4.1':
     dependencies:
@@ -2385,33 +2318,20 @@ snapshots:
       lodash.set: 4.3.2
       lodash.unset: 4.5.2
 
-  '@cloudbase/node-sdk@2.9.1(typescript@5.8.3)':
+  '@cloudbase/node-sdk@2.10.0':
     dependencies:
       '@cloudbase/database': 1.4.1
       '@cloudbase/signature-nodejs': 1.0.0-beta.0
-      '@types/retry': 0.12.5
       agentkeepalive: 4.6.0
       axios: 0.21.4
-      is-regex: 1.2.1
       jsonwebtoken: 8.5.1
-      lodash.merge: 4.6.2
       request: 2.88.2
-      request-promise: 4.2.6(request@2.88.2)
-      retry: 0.12.0
-      ts-node: 8.10.2(typescript@5.8.3)
-      xml2js: 0.4.23
+      retry: 0.13.1
+      xml2js: 0.5.0
     transitivePeerDependencies:
       - debug
-      - typescript
 
   '@cloudbase/signature-nodejs@1.0.0-beta.0':
-    dependencies:
-      '@types/clone': 0.1.30
-      clone: 2.1.2
-      is-stream: 2.0.1
-      url: 0.11.4
-
-  '@cloudbase/signature-nodejs@1.1.0':
     dependencies:
       '@types/clone': 0.1.30
       clone: 2.1.2
@@ -2564,8 +2484,6 @@ snapshots:
     dependencies:
       '@types/node': 20.17.30
 
-  '@types/long@4.0.2': {}
-
   '@types/minimatch@5.1.2': {}
 
   '@types/node@20.17.30':
@@ -2588,8 +2506,6 @@ snapshots:
   '@types/responselike@1.0.3':
     dependencies:
       '@types/node': 20.17.30
-
-  '@types/retry@0.12.5': {}
 
   '@types/tough-cookie@4.0.5': {}
 
@@ -2683,8 +2599,6 @@ snapshots:
       readable-stream: 3.6.2
       tar-stream: 2.2.0
       zip-stream: 2.1.3
-
-  arg@4.1.3: {}
 
   argparse@1.0.10:
     dependencies:
@@ -2782,8 +2696,6 @@ snapshots:
 
   blob@0.0.5: {}
 
-  bluebird@3.7.2: {}
-
   brace-expansion@1.1.11:
     dependencies:
       balanced-match: 1.0.2
@@ -2819,8 +2731,6 @@ snapshots:
   buffer-crc32@0.2.13: {}
 
   buffer-equal-constant-time@1.0.1: {}
-
-  buffer-from@1.1.2: {}
 
   buffer@5.7.1:
     dependencies:
@@ -3129,8 +3039,6 @@ snapshots:
   depd@2.0.0: {}
 
   destroy@1.2.0: {}
-
-  diff@4.0.2: {}
 
   dijkstrajs@1.0.3: {}
 
@@ -3923,8 +3831,6 @@ snapshots:
 
   lodash.isstring@4.0.1: {}
 
-  lodash.merge@4.6.2: {}
-
   lodash.once@4.1.1: {}
 
   lodash.set@4.3.2: {}
@@ -3948,7 +3854,7 @@ snapshots:
       safe-stable-stringify: 2.5.0
       triple-beam: 1.4.1
 
-  long@4.0.0: {}
+  long@5.3.2: {}
 
   lowercase-keys@1.0.1: {}
 
@@ -3957,8 +3863,6 @@ snapshots:
   make-dir@3.1.0:
     dependencies:
       semver: 6.3.1
-
-  make-error@1.3.6: {}
 
   map-cache@0.2.2: {}
 
@@ -4209,7 +4113,7 @@ snapshots:
 
   process-nextick-args@2.0.1: {}
 
-  protobufjs@6.11.4:
+  protobufjs@7.5.0:
     dependencies:
       '@protobufjs/aspromise': 1.1.2
       '@protobufjs/base64': 1.1.2
@@ -4221,9 +4125,8 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/long': 4.0.2
       '@types/node': 20.17.30
-      long: 4.0.0
+      long: 5.3.2
 
   psl@1.15.0:
     dependencies:
@@ -4323,14 +4226,6 @@ snapshots:
       stealthy-require: 1.1.1
       tough-cookie: 2.5.0
 
-  request-promise@4.2.6(request@2.88.2):
-    dependencies:
-      bluebird: 3.7.2
-      request: 2.88.2
-      request-promise-core: 1.1.4(request@2.88.2)
-      stealthy-require: 1.1.1
-      tough-cookie: 2.5.0
-
   request@2.88.2:
     dependencies:
       aws-sign2: 0.7.0
@@ -4373,7 +4268,7 @@ snapshots:
 
   ret@0.1.15: {}
 
-  retry@0.12.0: {}
+  retry@0.13.1: {}
 
   reusify@1.1.0: {}
 
@@ -4649,16 +4544,9 @@ snapshots:
       source-map-url: 0.4.1
       urix: 0.1.0
 
-  source-map-support@0.5.21:
-    dependencies:
-      buffer-from: 1.1.2
-      source-map: 0.6.1
-
   source-map-url@0.4.1: {}
 
   source-map@0.5.7: {}
-
-  source-map@0.6.1: {}
 
   split-string@3.1.0:
     dependencies:
@@ -4750,16 +4638,6 @@ snapshots:
       inherits: 2.0.4
       readable-stream: 3.6.2
 
-  tcb-admin-node@1.23.0:
-    dependencies:
-      '@cloudbase/database': 0.9.15
-      '@cloudbase/signature-nodejs': 1.1.0
-      is-regex: 1.2.1
-      jsonwebtoken: 8.5.1
-      lodash.merge: 4.6.2
-      request: 2.88.2
-      xml2js: 0.4.23
-
   tencentcloud-sdk-nodejs@3.0.270:
     dependencies:
       form-data: 2.3.3
@@ -4817,15 +4695,6 @@ snapshots:
   tr46@0.0.3: {}
 
   triple-beam@1.4.1: {}
-
-  ts-node@8.10.2(typescript@5.8.3):
-    dependencies:
-      arg: 4.1.3
-      diff: 4.0.2
-      make-error: 1.3.6
-      source-map-support: 0.5.21
-      typescript: 5.8.3
-      yn: 3.1.1
 
   tslib@1.14.1: {}
 
@@ -4958,18 +4827,16 @@ snapshots:
 
   wtf-8@1.0.0: {}
 
-  wx-server-sdk@2.6.3(typescript@5.8.3):
+  wx-server-sdk@3.0.1:
     dependencies:
-      '@cloudbase/node-sdk': 2.9.1(typescript@5.8.3)
+      '@cloudbase/node-sdk': 2.10.0
       json-bigint: 1.0.0
-      protobufjs: 6.11.4
-      tcb-admin-node: 1.23.0
+      protobufjs: 7.5.0
       tslib: 1.14.1
     transitivePeerDependencies:
       - debug
-      - typescript
 
-  xml2js@0.4.23:
+  xml2js@0.5.0:
     dependencies:
       sax: 1.4.1
       xmlbuilder: 11.0.1
@@ -5002,8 +4869,6 @@ snapshots:
   yeast@0.1.2: {}
 
   ylru@1.4.0: {}
-
-  yn@3.1.1: {}
 
   zip-stream@2.1.3:
     dependencies:

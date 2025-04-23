@@ -32,6 +32,10 @@ export default defineConfig<"webpack5">(async (merge) => {
           from: "cloudfunctions/appointments/built/",
           to: "dist/cloudfunctions/appointments/",
         },
+        {
+          from: "cloudfunctions/users/built/",
+          to: "dist/cloudfunctions/users/",
+        },
       ],
       options: {},
     },
