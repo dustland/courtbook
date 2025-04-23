@@ -1,102 +1,102 @@
-# CourtBook
+# 球场预约系统 (CourtBook)
 
-CourtBook is a WeChat Mini Program for court booking and scheduling, designed to help users easily book and manage their court reservations.
+球场预约系统是一个微信小程序，用于球场预订和日程安排，旨在帮助用户轻松预订和管理他们的球场预约。
 
-## Documentation
+## 文档
 
-- [English Getting Started Guide](docs/en/getting-started.md)
 - [中文开发环境搭建指南](docs/zh/getting-started.md)
 
-## Features
+## 功能特点
 
-- User-friendly interface for booking courts
-- Weekly and daily schedule views
-- Chat assistance for booking help
-- Appointment management
-- User profile and history tracking
+- 用户友好的球场预订界面
+- 周视图和日视图日程表
+- 预订帮助聊天辅助
+- 预约管理
+- 用户资料和历史记录跟踪
 
-## Technology Stack
+## 技术栈
 
-- Taro.js for cross-platform Mini Program development
-- React for UI components
-- Sass for styling
-- Taroify for UI components
-- WeChat Cloud Functions for backend services
+- Taro.js 用于跨平台小程序开发
+- React 用于 UI 组件
+- Sass 用于样式设计
+- Taroify 用于 UI 组件
+- 微信云函数用于后端服务
 
-## Development
+## 开发
 
-### Prerequisites
+### 前提条件
 
 - Node.js (v20+)
-- pnpm package manager
+- pnpm 包管理器
 - GitHub CLI
 
-See the detailed [getting started guide](docs/en/getting-started.md) for complete setup instructions.
+详细的[开发环境搭建指南](docs/zh/getting-started.md)提供了完整的设置说明。
 
-### Getting Started
+### 快速开始
 
 ```bash
-# Install dependencies
+# 安装依赖
 pnpm install
 
-# Start development server for WeChat Mini Program
+# 启动微信小程序开发服务器
 pnpm dev:weapp
 ```
 
-### Build for Production
+### 生产环境构建
 
 ```bash
 pnpm build:weapp
 ```
 
-## Cloud Functions
+## 云函数
 
-This project includes cloud functions for handling appointments and bookings. The cloud functions are located in the `cloudfunctions/` directory.
+本项目包含用于处理预约和订单的云函数。云函数位于 `cloudfunctions/` 目录中。
 
-### Building and Deploying Cloud Functions
+### 构建和部署云函数
 
-The cloud functions are built automatically when you run `pnpm build:weapp`. The build process:
+当您运行 `pnpm build:weapp` 时，云函数会自动构建。构建过程：
 
-1. Compiles TypeScript files in the cloud functions directories
-2. Copies the cloud functions to the `dist/cloudfunctions` directory
-3. Processes package.json files to remove development dependencies
+1. 编译云函数目录中的 TypeScript 文件
+2. 将云函数复制到 `dist/cloudfunctions` 目录
+3. 处理 package.json 文件以移除开发依赖
 
-To deploy the cloud functions:
+部署云函数的步骤：
 
-1. Build the project with `pnpm build:weapp`
-2. Open the project in WeChat Developer Tools
-3. Select "Upload" to upload the entire project
-4. After uploading, go to the Cloud Development console in WeChat Developer Tools
-5. Open the Cloud Functions section
-6. You should see your cloud functions listed
-7. For each function, click on it and select "Deploy" if needed
+1. 使用 `pnpm build:weapp` 构建项目
+2. 在微信开发者工具中打开项目
+3. 选择"上传"以上传整个项目
+4. 上传后，进入微信开发者工具中的云开发控制台
+5. 打开云函数部分
+6. 您应该能看到列出的云函数
+7. 对于每个函数，点击它并根据需要选择"部署"
 
-When you modify a cloud function:
+当您修改云函数时：
 
-1. Make your changes to files in the `cloudfunctions/` directory
-2. Run `pnpm build:weapp` to rebuild
-3. Upload to WeChat Developer Tools
-4. Re-deploy the affected functions
+1. 修改 `cloudfunctions/` 目录中的文件
+2. 运行 `pnpm build:weapp` 重新构建
+3. 上传到微信开发者工具
+4. 重新部署受影响的函数
 
-### Testing Cloud Functions
+### 测试云函数
 
-You can test cloud functions from the WeChat Developer Tools:
+您可以从微信开发者工具测试云函数：
 
-1. Open the Cloud Development console
-2. Go to the Cloud Functions section
-3. Click on a function
-4. Use the "Test" feature to send test requests
-5. Enter JSON test data (see examples in each function's README)
+1. 打开云开发控制台
+2. 进入云函数部分
+3. 点击一个函数
+4. 使用"测试"功能发送测试请求
+5. 输入 JSON 测试数据（参见每个函数 README 中的示例）
 
-## Project Structure
+## 项目结构
 
-- `/src/components`: Reusable UI components
-- `/src/pages`: Mini Program pages
-- `/src/assets`: Static assets like icons
-- `/src/custom-tab-bar`: Custom tab bar component for navigation
-- `/cloudfunctions`: Backend cloud functions
-  - `/appointments`: Appointment management service
+- `/src/components`: 可重用 UI 组件
+- `/src/pages`: 小程序页面
+- `/src/assets`: 静态资源如图标
+- `/src/custom-tab-bar`: 导航用的自定义标签栏组件
+- `/cloudfunctions`: 后端云函数
+  - `/appointments`: 预约管理服务
+  - `/users`: 用户管理服务
 
-## License
+## 许可证
 
 MIT
